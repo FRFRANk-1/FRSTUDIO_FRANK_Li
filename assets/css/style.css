@@ -4,10 +4,10 @@ body {
   color: #777;
   font-weight: 300;
   font-size: 1rem;
-  background: #000; }
+  background: #e6f8fc; }
 
 ::-moz-selection {
-  background: #000;
+  background: #e6f8fc;
   color: #fff; }
 
 ::selection {
