@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CodClimb — Frank Li</title>
+  <meta name="description" content="CodClimb: A Swift iOS app that gives outdoor rock climbers real-time weather scores and community condition reports for any crag." />
+  <link rel="icon" href="images/favicons/camera.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/webfonts/icomoon/style.css" />
+  <link rel="stylesheet" href="assets/css/frank-redesign.css" />
+
+  <style>
+    /* ── CODCLIMB PAGE STYLES ─────────────────────────────── */
+
+    /* HERO */
+    .cc-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      padding-top: 8rem;
+      padding-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cc-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 50%, rgba(92,225,230,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(74,222,128,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .cc-hero__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .cc-hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .cc-hero__badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4ADE80;
+      background: rgba(74,222,128,0.1);
+      border: 1px solid rgba(74,222,128,0.25);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+    }
+    .cc-hero__status {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+    }
+    .cc-hero__title {
+      font-size: clamp(3rem, 6vw, 5rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .cc-hero__title .brand-cod { color: var(--accent); }
+    .cc-hero__title .brand-climb { color: #4ADE80; }
+    .cc-hero__subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .cc-hero__desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+    .cc-hero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* LARGE PHONE MOCKUP */
+    .cc-phone-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    .cc-phone {
+      width: 260px;
+      background: #111;
+      border: 2px solid #2a2a2a;
+      border-radius: 40px;
+      padding: 1.75rem 1.25rem;
+      box-shadow:
+        0 60px 120px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(255,255,255,0.04),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .cc-phone::before {
+      content: '';
+      position: absolute;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 5px;
+      background: #2a2a2a;
+      border-radius: 3px;
+    }
+    .cc-screen {
+      background: #061510;
+      border-radius: 24px;
+      padding: 1.5rem 1.25rem;
+      min-height: 420px;
+    }
+    .cc-screen-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .cc-app-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .cc-app-name .c1 { color: #5CE1E6; }
+    .cc-app-name .c2 { color: #4ADE80; }
+    .cc-live-dot {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.6rem;
+      color: #4ADE80;
+      font-family: var(--font-mono);
+    }
+    .cc-live-dot::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4ADE80;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .cc-location {
+      font-size: 0.65rem;
+      color: #666;
+      font-family: var(--font-mono);
+      margin-bottom: 1rem;
+    }
+    .cc-score-card {
+      background: linear-gradient(135deg, rgba(92,225,230,0.08), rgba(74,222,128,0.05));
+      border: 1px solid rgba(92,225,230,0.2);
+      border-radius: 16px;
+      padding: 1.25rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .cc-score-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #5CE1E6, #4ADE80);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cc-score-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #5CE1E6;
+      font-family: var(--font-mono);
+      margin-top: 0.25rem;
+    }
+    .cc-score-desc {
+      font-size: 0.7rem;
+      color: #4ADE80;
+      margin-top: 0.5rem;
+    }
+    .cc-bars { margin-bottom: 1rem; }
+    .cc-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .cc-bar-label {
+      font-size: 0.55rem;
+      color: #555;
+      font-family: var(--font-mono);
+      width: 50px;
+      flex-shrink: 0;
+    }
+    .cc-bar-track {
+      flex: 1;
+      height: 4px;
+      background: #1a2a1a;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .cc-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #4ADE80, #5CE1E6);
+    }
+    .cc-bar-val {
+      font-size: 0.55rem;
+      color: #5CE1E6;
+      font-family: var(--font-mono);
+      width: 30px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .cc-report {
+      background: rgba(74,222,128,0.05);
+      border: 1px solid rgba(74,222,128,0.15);
+      border-radius: 10px;
+      padding: 0.75rem;
+    }
+    .cc-report-header {
+      font-size: 0.55rem;
+      color: #4ADE80;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: var(--font-mono);
+      margin-bottom: 0.4rem;
+    }
+    .cc-report-user {
+      font-size: 0.65rem;
+      color: #aaa;
+      margin-bottom: 0.2rem;
+    }
+    .cc-report-user strong { color: #5CE1E6; }
+    .cc-report-text {
+      font-size: 0.65rem;
+      color: #888;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* STORY SECTION */
+    .cc-story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .cc-story__quote {
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.5;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    /* FEATURES GRID */
+    .cc-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .cc-feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .cc-feature-card:hover {
+      border-color: rgba(92,225,230,0.4);
+      transform: translateY(-3px);
+    }
+    .cc-feature-card__icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .cc-feature-card__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .cc-feature-card__body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* TECH STACK */
+    .cc-stack {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .cc-stack-item {
+      padding: 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .cc-stack-item__icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .cc-stack-item__name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .cc-stack-item__desc {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* REPUTATION SYSTEM */
+    .cc-rank-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    .cc-rank {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .cc-rank__emoji { font-size: 1.25rem; }
+    .cc-rank__name { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .cc-rank__desc { font-size: 0.7rem; color: var(--text-muted); }
+
+    /* VISION */
+    .cc-vision {
+      background: var(--surface);
+      border: 1px solid rgba(92,225,230,0.2);
+      border-radius: 24px;
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cc-vision::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(92,225,230,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cc-vision h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .cc-vision p {
+      max-width: 560px;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+      position: relative;
+    }
+
+    /* BUILDER NOTE */
+    .cc-builder {
+      display: flex;
+      gap: 2rem;
+      align-items: start;
+      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+    .cc-builder__photo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+    }
+    .cc-builder__name {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+    .cc-builder__role {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-bottom: 0.75rem;
+    }
+    .cc-builder__quote {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .cc-hero__grid { grid-template-columns: 1fr; }
+      .cc-phone-wrap { display: none; }
+      .cc-story { grid-template-columns: 1fr; }
+      .cc-features { grid-template-columns: 1fr; }
+      .cc-stack { grid-template-columns: repeat(2, 1fr); }
+      .cc-rank-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="fr-nav scrolled" id="navbar">
+    <a href="index.html" class="fr-nav__logo">Frank<span>.</span></a>
+    <ul class="fr-nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="codclimb.html" class="active">CodClimb</a></li>
+      <li><a href="index.html#photography">Photography</a></li>
+      <li><a href="index.html#videography">Videography</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cc-hero container">
+    <div class="cc-hero__grid">
+      <div>
+        <div class="cc-hero__eyebrow">
+          <span class="cc-hero__badge">MVP &mdash; In Development</span>
+          <span class="cc-hero__status">Swift iOS &middot; 2025</span>
+        </div>
+        <h1 class="cc-hero__title">
+          <span class="brand-cod">Cod</span><span class="brand-climb">Climb</span>
+        </h1>
+        <p class="cc-hero__subtitle">
+          Real-time conditions intelligence<br />for outdoor rock climbers.
+        </p>
+        <p class="cc-hero__desc">
+          No more gambling on the drive to the crag. CodClimb pulls weather data,
+          runs it through a climbing-specific algorithm, and shows you a 0&ndash;100
+          score for your crag — right now, for the next 48 hours. Backed by live
+          community condition reports from climbers already at the wall.
+        </p>
+        <div class="cc-hero__ctas">
+          <a href="#features" class="btn btn-primary">See Features &darr;</a>
+          <a href="#story" class="btn btn-outline">The Story</a>
+        </div>
+      </div>
+
+      <div class="cc-phone-wrap">
+        <div class="cc-phone">
+          <div class="cc-screen">
+            <div class="cc-screen-header">
+              <div class="cc-app-name"><span class="c1">Cod</span><span class="c2">Climb</span></div>
+              <div class="cc-live-dot">LIVE</div>
+            </div>
+            <div class="cc-location">&#128205; Rumney, NH &mdash; Meadow Ledge</div>
+
+            <div class="cc-score-card">
+              <div class="cc-score-number">87</div>
+              <div class="cc-score-label">Climb Score</div>
+              <div class="cc-score-desc">&#10003; Excellent — Go climb!</div>
+            </div>
+
+            <div class="cc-bars">
+              <div class="cc-bar-row">
+                <span class="cc-bar-label">Humidity</span>
+                <div class="cc-bar-track"><div class="cc-bar-fill" style="width:34%"></div></div>
+                <span class="cc-bar-val">34%</span>
+              </div>
+              <div class="cc-bar-row">
+                <span class="cc-bar-label">Wind</span>
+                <div class="cc-bar-track"><div class="cc-bar-fill" style="width:20%"></div></div>
+                <span class="cc-bar-val">8 mph</span>
+              </div>
+              <div class="cc-bar-row">
+                <span class="cc-bar-label">Rain risk</span>
+                <div class="cc-bar-track"><div class="cc-bar-fill" style="width:5%"></div></div>
+                <span class="cc-bar-val">0%</span>
+              </div>
+              <div class="cc-bar-row">
+                <span class="cc-bar-label">Temp</span>
+                <div class="cc-bar-track"><div class="cc-bar-fill" style="width:68%"></div></div>
+                <span class="cc-bar-val">65&deg;F</span>
+              </div>
+            </div>
+
+            <div class="cc-report">
+              <div class="cc-report-header">&#129495; Community Report</div>
+              <div class="cc-report-user"><strong>Granite_King</strong> &bull; FlintSlab &bull; 1h ago</div>
+              <div class="cc-report-text">"Friction perfect, Zebra slabs bone dry. Go for it!"</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- THE STORY -->
+  <section class="section container" id="story">
+    <span class="label">Origin Story</span>
+    <div class="cc-story">
+      <div>
+        <blockquote class="cc-story__quote">
+          "I drove 2 hours to Rumney. The rock was wet. The weather app said 0% rain."
+        </blockquote>
+        <p style="margin-bottom:1.25rem;">
+          That's it. That's the whole story. I'm Frank — I climb outdoors in New England, which means
+          I play a constant gamble with microclimate weather. Standard forecast apps don't know what
+          granite friction feels like after morning fog. They don't know that north-facing walls
+          seep for days after rain. Climbers know. But there was no app that asked them.
+        </p>
+        <p style="margin-bottom:1.25rem;">
+          So I built one. CodClimb uses the Open-Meteo API to pull hyper-local weather data for
+          any crag, then runs it through a climbing-specific scoring algorithm — accounting for
+          humidity, dew point, recent precipitation, wind, and temperature — to output a single
+          number: your Climb Score. 0 to 100.
+        </p>
+        <p>
+          Then the community layer kicks in. Real climbers post real-time reports. They earn
+          reputation with every post. That's the data weather APIs will never have.
+        </p>
+      </div>
+      <div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;">
+          <div style="margin-bottom:1.5rem;">
+            <div class="label">The Problem</div>
+            <p style="font-size:0.9rem;">Weather apps give city-level forecasts. Crags are in canyons, on cliff faces, in forests. They dry differently. They seep differently. A 0% rain forecast means nothing when the rock is seeping from two days ago.</p>
+          </div>
+          <div style="margin-bottom:1.5rem;">
+            <div class="label">The Solution</div>
+            <p style="font-size:0.9rem;">A climbing-specific weather score + live community reports. Data where it matters: the actual wall, the actual moment, from people who are actually there.</p>
+          </div>
+          <div>
+            <div class="label">The Market</div>
+            <p style="font-size:0.9rem;">7.7M climbers in the US. Most climb outdoors at some point. There is no dominant app solving the "is my crag climbable right now?" problem with community data. Not yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- FEATURES -->
+  <section class="section container" id="features">
+    <div style="margin-bottom:2.5rem;">
+      <span class="label">Features</span>
+      <h2>Everything you need before you leave the car</h2>
+    </div>
+
+    <div class="cc-features">
+      <div class="cc-feature-card">
+        <div class="cc-feature-card__icon">🌡️</div>
+        <div class="cc-feature-card__title">Weather Intelligence Score</div>
+        <p class="cc-feature-card__body">
+          A 0&ndash;100 score built specifically for climbing — weighing humidity, dew point, wind,
+          temperature, and precipitation probability in a formula that matches real friction conditions,
+          not just comfort.
+        </p>
+      </div>
+
+      <div class="cc-feature-card">
+        <div class="cc-feature-card__icon">🧗</div>
+        <div class="cc-feature-card__title">Live Community Reports</div>
+        <p class="cc-feature-card__body">
+          Climbers post condition updates from the crag — specific walls, specific routes.
+          Wet rock? Dry rock? Seeping? Someone who's there right now can tell you. Filter by route,
+          sector, or time.
+        </p>
+      </div>
+
+      <div class="cc-feature-card">
+        <div class="cc-feature-card__icon">📸</div>
+        <div class="cc-feature-card__title">Photo Reporting</div>
+        <p class="cc-feature-card__body">
+          Attach a photo to your condition report. A wet seam, a dry hold, a sunrise on the cliff face.
+          Visual proof beats text any day. Build the visual history of your local crag.
+        </p>
+      </div>
+
+      <div class="cc-feature-card">
+        <div class="cc-feature-card__icon">🏅</div>
+        <div class="cc-feature-card__title">Reputation System</div>
+        <p class="cc-feature-card__body">
+          The more you report, the higher your rank. From <em>Chalk Bag</em> to <em>Crag Legend</em>.
+          Community trust is earned in the field. Your reputation is visible to other climbers,
+          so quality reports get respected.
+        </p>
+      </div>
+
+      <div class="cc-feature-card">
+        <div class="cc-feature-card__icon">📅</div>
+        <div class="cc-feature-card__title">48-Hour Forecast View</div>
+        <p class="cc-feature-card__body">
+          Plan your next two days at a glance. Hourly Climb Scores let you pick the perfect
+          window — whether you want morning conditions or an afternoon session.
+        </p>
+      </div>
+
+      <div class="cc-feature-card">
+        <div class="cc-feature-card__icon">📍</div>
+        <div class="cc-feature-card__title">Crag Database</div>
+        <p class="cc-feature-card__body">
+          Search for any crag by name or location. Community-sourced crag profiles let climbers
+          add local knowledge — shade/sun orientation, typical drying time, access notes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- TECH STACK -->
+  <section class="section container">
+    <div style="margin-bottom:2.5rem;">
+      <span class="label">Tech Stack</span>
+      <h2>How it's built</h2>
+    </div>
+
+    <div class="cc-stack">
+      <div class="cc-stack-item">
+        <div class="cc-stack-item__icon">📱</div>
+        <div class="cc-stack-item__name">Swift / SwiftUI</div>
+        <div class="cc-stack-item__desc">Native iOS app</div>
+      </div>
+      <div class="cc-stack-item">
+        <div class="cc-stack-item__icon">🌤️</div>
+        <div class="cc-stack-item__name">Open-Meteo API</div>
+        <div class="cc-stack-item__desc">Weather data</div>
+      </div>
+      <div class="cc-stack-item">
+        <div class="cc-stack-item__icon">🤖</div>
+        <div class="cc-stack-item__name">AI Engine</div>
+        <div class="cc-stack-item__desc">Scoring algorithm</div>
+      </div>
+      <div class="cc-stack-item">
+        <div class="cc-stack-item__icon">☁️</div>
+        <div class="cc-stack-item__name">Firebase</div>
+        <div class="cc-stack-item__desc">Community & storage</div>
+      </div>
+      <div class="cc-stack-item">
+        <div class="cc-stack-item__icon">📍</div>
+        <div class="cc-stack-item__name">MapKit</div>
+        <div class="cc-stack-item__desc">Crag locations</div>
+      </div>
+      <div class="cc-stack-item">
+        <div class="cc-stack-item__icon">⚡</div>
+        <div class="cc-stack-item__name">Combine</div>
+        <div class="cc-stack-item__desc">Reactive data flow</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- REPUTATION RANKS -->
+  <section class="section container">
+    <div style="margin-bottom:2rem;">
+      <span class="label">Community</span>
+      <h2>Earn your rank at the crag</h2>
+      <p style="margin-top:0.5rem;max-width:500px;">The more you report, the higher your standing. Trusted reporters make the whole community better.</p>
+    </div>
+
+    <div class="cc-rank-list">
+      <div class="cc-rank">
+        <div class="cc-rank__emoji">🎒</div>
+        <div>
+          <div class="cc-rank__name">Chalk Bag</div>
+          <div class="cc-rank__desc">Just getting started. 0–4 reports.</div>
+        </div>
+      </div>
+      <div class="cc-rank">
+        <div class="cc-rank__emoji">🪨</div>
+        <div>
+          <div class="cc-rank__name">Boulder Rat</div>
+          <div class="cc-rank__desc">Regular reporter. 5–19 reports.</div>
+        </div>
+      </div>
+      <div class="cc-rank">
+        <div class="cc-rank__emoji">🧗</div>
+        <div>
+          <div class="cc-rank__name">Route Setter</div>
+          <div class="cc-rank__desc">Trusted voice. 20–49 reports.</div>
+        </div>
+      </div>
+      <div class="cc-rank">
+        <div class="cc-rank__emoji">🏔️</div>
+        <div>
+          <div class="cc-rank__name">Crag Legend</div>
+          <div class="cc-rank__desc">Community pillar. 50+ reports.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- VISION -->
+  <section class="section container">
+    <div class="cc-vision">
+      <span class="label">What's Next</span>
+      <h2>Launch is coming this summer.</h2>
+      <p>
+        CodClimb MVP is nearly ready. This June, I'm heading to the crag every day — climbing,
+        reporting, testing, and building. The plan: launch on the App Store, grow it through
+        Instagram, TikTok, and 小红书, with me as the first power user.
+        Not just a builder. The actual target user.
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="https://www.instagram.com/fr_studio_art/" target="_blank" class="btn btn-primary">Follow on Instagram</a>
+        <a href="about.html" class="btn btn-outline">About Frank</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDER NOTE -->
+  <section class="section-sm container">
+    <div class="cc-builder">
+      <div class="cc-builder__photo">🧗</div>
+      <div>
+        <div class="cc-builder__name">Runcheng (Frank) Li</div>
+        <div class="cc-builder__role">Builder, climber, and the test user</div>
+        <p class="cc-builder__quote">
+          "I built CodClimb because I am the user. I climb V5&ndash;V6 outdoors, I've driven to wet
+          rock more times than I can count, and I knew climbers would share conditions if the app made
+          it worth their while. The community layer is the whole point. Weather data is a floor —
+          humans are the ceiling."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="fr-footer container">
+    <div class="fr-footer__inner">
+      <div>
+        <div style="font-weight:700;font-size:1rem;margin-bottom:0.25rem;">Frank Li</div>
+        <div class="fr-footer__copy">
+          &copy; <script>document.write(new Date().getFullYear())</script> Runcheng (Frank) Li &mdash; Boston, MA
+        </div>
+      </div>
+      <div class="fr-footer__social">
+        <a href="https://www.linkedin.com/in/runcheng-li-1b9748205/" target="_blank">LinkedIn</a>
+        <a href="https://www.instagram.com/fr_studio_art/" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg" target="_blank">YouTube</a>
+        <a href="index.html">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        navbar.classList.add('scrolled');
+      }
+    });
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
