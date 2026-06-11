@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adventures — Frank Li</title>
+  <meta name="description" content="Rock climbing, skiing, surfing, and hiking — the outdoor field log of Runcheng (Frank) Li. Shot across New England and the West on Canon R6 II and DJI Action 4." />
+  <link rel="icon" href="images/favicons/camera.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Design system -->
+  <link rel="stylesheet" href="assets/css/frank-redesign.css" />
+
+  <style>
+    /* ── HERO ─────────────────────────────────────────────── */
+    .adv-hero {
+      min-height: 72vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 7rem;
+      position: relative;
+    }
+    .adv-hero__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .adv-hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+    .adv-hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      margin-bottom: 1.25rem;
+    }
+    .adv-hero__sub {
+      max-width: 560px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+    .adv-hero__stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .adv-stat__num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+    .adv-stat__num span { color: var(--accent); }
+    .adv-stat__label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+      font-family: var(--font-mono);
+    }
+
+    /* sport chips */
+    .sport-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .sport-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--surface);
+      transition: all var(--transition);
+    }
+    .sport-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .sport-chip small {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+
+    /* ── GALLERY SECTIONS ─────────────────────────────────── */
+    .adv-section { padding: 4.5rem 0; }
+    .adv-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .adv-header h2 { margin-bottom: 0.35rem; }
+    .adv-header p { font-size: 0.9rem; max-width: 620px; }
+    .adv-count {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    /* masonry */
+    .adv-grid {
+      columns: 3;
+      column-gap: 0.75rem;
+    }
+    .adv-grid a {
+      display: block;
+      break-inside: avoid;
+      margin-bottom: 0.75rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--surface-2);
+      position: relative;
+      cursor: zoom-in;
+    }
+    .adv-grid img {
+      width: 100%;
+      transition: transform 0.45s ease, opacity 0.45s ease;
+      opacity: 0.92;
+    }
+    .adv-grid a:hover img { transform: scale(1.035); opacity: 1; }
+
+    .gallery-note {
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+    .gallery-note a { color: var(--accent); }
+
+    /* ── CLIPS ────────────────────────────────────────────── */
+    .clips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .clip-card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .clip-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .clip-card__thumb {
+      aspect-ratio: 16/10;
+      background: var(--surface-2);
+      position: relative;
+      overflow: hidden;
+    }
+    .clip-card__thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .clip-card__play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: rgba(255,255,255,0.9);
+      background: rgba(0,0,0,0.25);
+      transition: background var(--transition);
+    }
+    .clip-card:hover .clip-card__play { background: rgba(0,0,0,0.1); }
+    .clip-card__body { padding: 1rem 1.25rem 1.25rem; }
+    .clip-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .clip-card__platform {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      border: 1px solid rgba(92,225,230,0.3);
+      padding: 0.12rem 0.5rem;
+      border-radius: 100px;
+    }
+    .clip-card__sport {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
+    .clip-card__title { font-weight: 600; font-size: 0.95rem; color: var(--text); }
+
+    .clips-empty {
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      text-align: center;
+      background: var(--surface);
+    }
+    .clips-empty__icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .clips-empty p { max-width: 520px; margin: 0 auto 1.5rem; font-size: 0.95rem; }
+    .clips-empty__socials { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── LIGHTBOX ─────────────────────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(4,6,8,0.96);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 88vh;
+      border-radius: 6px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
+    .lightbox__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+      backdrop-filter: blur(6px);
+    }
+    .lightbox__btn:hover { background: rgba(92,225,230,0.25); }
+    .lightbox__prev { left: 1.25rem; }
+    .lightbox__next { right: 1.25rem; }
+    .lightbox__close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      transform: none;
+    }
+    .lightbox__counter {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .adv-grid { columns: 2; }
+      .clips-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .adv-grid { columns: 2; column-gap: 0.5rem; }
+      .adv-grid a { margin-bottom: 0.5rem; }
+      .lightbox__btn { width: 40px; height: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="fr-nav" id="navbar">
+    <a href="index.html" class="fr-nav__logo">Frank<span>.</span></a>
+    <ul class="fr-nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="codclimb.html">CodClimb</a></li>
+      <li><a href="adventures.html" class="active">Adventures</a></li>
+      <li><a href="index.html#photography">Photography</a></li>
+      <li><a href="index.html#videography">Videography</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="adv-hero container">
+    <div class="adv-hero__eyebrow fade-up">The Outdoor Log · 2024–2025</div>
+    <h1 class="fade-up-2">Built outside.</h1>
+    <p class="adv-hero__sub fade-up-3">
+      Engineer by trade, outside every week it's possible. Granite, powder, cold-water swell,
+      and mountain trails — shot on Canon R6 II and DJI Action 4. This is the life behind
+      <a href="codclimb.html" style="color:var(--accent);font-weight:600;">CodClimb</a>.
+    </p>
+
+    <div class="adv-hero__stats fade-up-3">
+      <div>
+        <div class="adv-stat__num">117<span>+</span></div>
+        <div class="adv-stat__label">Frames in the log</div>
+      </div>
+      <div>
+        <div class="adv-stat__num">4</div>
+        <div class="adv-stat__label">Sports</div>
+      </div>
+      <div>
+        <div class="adv-stat__num">V5<span>–</span>6</div>
+        <div class="adv-stat__label">Boulder grade</div>
+      </div>
+      <div>
+        <div class="adv-stat__num">5.10<span>–</span>11</div>
+        <div class="adv-stat__label">Sport lead</div>
+      </div>
+    </div>
+
+    <div class="sport-chips fade-up-4">
+      <a class="sport-chip" href="#climb">🧗 Climb <small>37</small></a>
+      <a class="sport-chip" href="#ski">⛷ Ski <small>36</small></a>
+      <a class="sport-chip" href="#surf">🌊 Surf <small>21</small></a>
+      <a class="sport-chip" href="#hiking">🥾 Hiking <small>23</small></a>
+      <a class="sport-chip" href="#clips">🎬 Clips <small>new</small></a>
+    </div>
+  </header>
+
+  <hr class="divider" />
+
+  <!-- CLIMB -->
+  <section class="adv-section container" id="climb">
+    <div class="adv-header">
+      <div>
+        <span class="label">01 · Rock Climbing</span>
+        <h2>On the Sharp End</h2>
+        <p>
+          Outside twice a week, season permitting — quarry walls, forest crags, and sea-cliff
+          granite across New England. Boulder V5–V6, sport lead 5.10–5.11. Driving to wet rock
+          one too many times is literally why <a href="codclimb.html" style="color:var(--accent);">CodClimb</a> exists.
+        </p>
+      </div>
+      <span class="adv-count">37 photos</span>
+    </div>
+    <div class="adv-grid" id="grid-climb"></div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SKI -->
+  <section class="adv-section container" id="ski">
+    <div class="adv-header">
+      <div>
+        <span class="label">02 · Skiing</span>
+        <h2>Chasing Winter</h2>
+        <p>
+          Powder days and black runs — Utah road trips, Deer Valley groomers, salt-flat detours,
+          and icy New England night laps. If there's snow in the forecast, the car is already packed.
+        </p>
+      </div>
+      <span class="adv-count">36 photos</span>
+    </div>
+    <div class="adv-grid" id="grid-ski"></div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SURF -->
+  <section class="adv-section container" id="surf">
+    <div class="adv-header">
+      <div>
+        <span class="label">03 · Surfing</span>
+        <h2>Cold-Water Sessions</h2>
+        <p>
+          New England surf means dawn patrol, winter swells, and a thick wetsuit — 5–6 ft days
+          when the storms line up. The Miata gets the board to the beach, barely.
+        </p>
+      </div>
+      <span class="adv-count">21 photos</span>
+    </div>
+    <div class="adv-grid" id="grid-surf"></div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- HIKING -->
+  <section class="adv-section container" id="hiking">
+    <div class="adv-header">
+      <div>
+        <span class="label">04 · Hiking</span>
+        <h2>Into the Hills</h2>
+        <p>
+          Summer ridgelines to winter scrambles — trail miles across New England's mountains
+          and beyond, helmet on when it gets steep. MTB and other POV footage lands in the
+          clips below.
+        </p>
+      </div>
+      <span class="adv-count">23 photos</span>
+    </div>
+    <div class="adv-grid" id="grid-hiking"></div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CLIPS -->
+  <section class="adv-section container" id="clips">
+    <div class="adv-header">
+      <div>
+        <span class="label">05 · Clips</span>
+        <h2>In Motion</h2>
+        <p>
+          Short cuts from the GoPro and Action 4 — surf, MTB, ski, and climbing clips,
+          posted to Instagram and TikTok as they leave the edit bay.
+        </p>
+      </div>
+    </div>
+
+    <!--
+      ══════════════════════════════════════════════════════════════
+      HOW TO ADD A CLIP (no other edits needed):
+      Add one object to the CLIPS array in the script below, e.g.
+
+      {
+        sport:    "Surf",                              // Surf | MTB | Ski | Climb
+        platform: "Instagram",                         // Instagram | TikTok | YouTube
+        title:    "January swell — Nahant dawn patrol",
+        url:      "https://www.instagram.com/reel/XXXX/",
+        thumb:    "images/adventures-web/surf/thumbs/surf-18.jpg"  // any image, optional
+      },
+
+      Cards render automatically. When the array is empty, the
+      "coming soon" card shows instead.
+      ══════════════════════════════════════════════════════════════
+    -->
+    <div class="clips-grid" id="clipsGrid" style="display:none;"></div>
+
+    <div class="clips-empty" id="clipsEmpty">
+      <div class="clips-empty__icon">🎬</div>
+      <h3>First clips dropping soon.</h3>
+      <p>
+        Surf, MTB, ski, and outdoor climbing edits are on the way.
+        Follow along so you don't miss the first drop:
+      </p>
+      <div class="clips-empty__socials">
+        <a href="https://www.instagram.com/fr_studio_art/" target="_blank" class="btn btn-outline">Instagram &#8599;</a>
+        <a href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg" target="_blank" class="btn btn-outline">YouTube &#8599;</a>
+        <a href="https://space.bilibili.com/398891472" target="_blank" class="btn btn-outline">BiliBili &#8599;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer">
+    <img id="lightboxImg" src="" alt="" />
+    <button class="lightbox__btn lightbox__prev" id="lbPrev" aria-label="Previous photo">&#8592;</button>
+    <button class="lightbox__btn lightbox__next" id="lbNext" aria-label="Next photo">&#8594;</button>
+    <button class="lightbox__btn lightbox__close" id="lbClose" aria-label="Close">&#10005;</button>
+    <div class="lightbox__counter" id="lbCounter"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="fr-footer container">
+    <div class="fr-footer__inner">
+      <div>
+        <div style="font-weight:700;font-size:1rem;margin-bottom:0.25rem;">Frank Li</div>
+        <div class="fr-footer__copy">
+          &copy; <script>document.write(new Date().getFullYear())</script> Runcheng (Frank) Li &mdash; Boston, MA
+        </div>
+      </div>
+      <div class="fr-footer__social">
+        <a href="https://www.linkedin.com/in/runcheng-li-1b9748205/" target="_blank">LinkedIn</a>
+        <a href="https://www.instagram.com/fr_studio_art/" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg" target="_blank">YouTube</a>
+        <a href="https://space.bilibili.com/398891472" target="_blank">BiliBili</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── NAV ─────────────────────────────────────────────── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+    /* ── GALLERIES ───────────────────────────────────────────
+       Photos live in images/adventures-web/<sport>/thumbs (grid)
+       and /fulls (lightbox). Files are named <sport>-NN.jpg.
+       To add photos: drop optimized files with the next numbers
+       into both folders and bump the count here.               */
+    const GALLERIES = {
+      climb:  { count: 37, label: 'Rock climbing' },
+      ski:    { count: 36, label: 'Skiing' },
+      surf:   { count: 21, label: 'Surfing' },
+      hiking: { count: 23, label: 'Hiking' }
+    };
+
+    const flat = [];   // flat list for the lightbox
+    Object.entries(GALLERIES).forEach(([sport, cfg]) => {
+      const grid = document.getElementById('grid-' + sport);
+      if (!grid) return;
+      for (let i = 1; i <= cfg.count; i++) {
+        const nn = String(i).padStart(2, '0');
+        const thumb = `images/adventures-web/${sport}/thumbs/${sport}-${nn}.jpg`;
+        const full  = `images/adventures-web/${sport}/fulls/${sport}-${nn}.jpg`;
+        const idx = flat.length;
+        flat.push({ full, label: `${cfg.label} — ${nn}/${cfg.count}` });
+
+        const a = document.createElement('a');
+        a.href = full;
+        a.addEventListener('click', (e) => { e.preventDefault(); openLightbox(idx); });
+        const img = document.createElement('img');
+        img.src = thumb;
+        img.alt = `${cfg.label} photo ${i}`;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        a.appendChild(img);
+        grid.appendChild(a);
+      }
+    });
+
+    /* ── LIGHTBOX ────────────────────────────────────────── */
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbCounter = document.getElementById('lbCounter');
+    let lbIndex = 0;
+
+    function openLightbox(i) {
+      lbIndex = i;
+      render();
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function step(d) {
+      lbIndex = (lbIndex + d + flat.length) % flat.length;
+      render();
+    }
+    function render() {
+      const item = flat[lbIndex];
+      lbImg.src = item.full;
+      lbImg.alt = item.label;
+      lbCounter.textContent = item.label;
+      // preload neighbours
+      [1, -1].forEach(d => {
+        const n = new Image();
+        n.src = flat[(lbIndex + d + flat.length) % flat.length].full;
+      });
+    }
+
+    document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+    document.getElementById('lbNext').addEventListener('click', () => step(1));
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') step(-1);
+      if (e.key === 'ArrowRight') step(1);
+    });
+    // basic swipe
+    let touchX = null;
+    lb.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) step(dx > 0 ? -1 : 1);
+      touchX = null;
+    }, { passive: true });
+
+    /* ── CLIPS ───────────────────────────────────────────────
+       Add clips here — see the HOW-TO comment in the section.  */
+    const CLIPS = [
+      // {
+      //   sport: "Surf",
+      //   platform: "Instagram",
+      //   title: "Winter swell — dawn patrol",
+      //   url: "https://www.instagram.com/reel/XXXX/",
+      //   thumb: "images/adventures-web/surf/thumbs/surf-18.jpg"
+      // },
+    ];
+
+    const clipsGrid = document.getElementById('clipsGrid');
+    const clipsEmpty = document.getElementById('clipsEmpty');
+    if (CLIPS.length > 0) {
+      clipsEmpty.style.display = 'none';
+      clipsGrid.style.display = 'grid';
+      CLIPS.forEach(c => {
+        const a = document.createElement('a');
+        a.className = 'clip-card';
+        a.href = c.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.innerHTML = `
+          <div class="clip-card__thumb">
+            ${c.thumb ? `<img src="${c.thumb}" alt="${c.title}" loading="lazy" />` : ''}
+            <div class="clip-card__play">&#9655;</div>
+          </div>
+          <div class="clip-card__body">
+            <div class="clip-card__meta">
+              <span class="clip-card__platform">${c.platform}</span>
+              <span class="clip-card__sport">${c.sport}</span>
+            </div>
+            <div class="clip-card__title">${c.title}</div>
+          </div>`;
+        clipsGrid.appendChild(a);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor
+.vscode/
+
+# Nested repo / deployment copy (6.2 GB — never commit)
+live_site/
+
+# Photo originals — site only serves the optimized copies in images/adventures-web/
+images/Hiking/
+images/Ski Photo/
+images/Surf photo/
+images/outdoor climb/
+images/1Y6A9794.jpg

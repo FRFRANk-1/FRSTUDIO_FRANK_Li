@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CodClimb — Frank Li</title>
-  <meta name="description" content="CodClimb: A Swift iOS app that gives outdoor rock climbers real-time weather scores and community condition reports for any crag." />
+  <meta name="description" content="CodClimb — Frank Li's Swift iOS app, live on the App Store. Real-time climbability scores and community condition reports for 237 US crags." />
   <link rel="icon" href="images/favicons/camera.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -90,163 +90,14 @@
       display: flex;
       justify-content: center;
     }
-    .cc-phone {
-      width: 260px;
-      background: #111;
-      border: 2px solid #2a2a2a;
-      border-radius: 40px;
-      padding: 1.75rem 1.25rem;
+    .cc-shot {
+      width: 320px;
+      max-width: 100%;
+      border-radius: 28px;
+      border: 1px solid rgba(92,225,230,0.15);
       box-shadow:
-        0 60px 120px rgba(0,0,0,0.6),
-        0 0 0 1px rgba(255,255,255,0.04),
-        inset 0 1px 0 rgba(255,255,255,0.06);
-      position: relative;
-    }
-    .cc-phone::before {
-      content: '';
-      position: absolute;
-      top: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 5px;
-      background: #2a2a2a;
-      border-radius: 3px;
-    }
-    .cc-screen {
-      background: #061510;
-      border-radius: 24px;
-      padding: 1.5rem 1.25rem;
-      min-height: 420px;
-    }
-    .cc-screen-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.25rem;
-    }
-    .cc-app-name {
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-    .cc-app-name .c1 { color: #5CE1E6; }
-    .cc-app-name .c2 { color: #4ADE80; }
-    .cc-live-dot {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.6rem;
-      color: #4ADE80;
-      font-family: var(--font-mono);
-    }
-    .cc-live-dot::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #4ADE80;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-    .cc-location {
-      font-size: 0.65rem;
-      color: #666;
-      font-family: var(--font-mono);
-      margin-bottom: 1rem;
-    }
-    .cc-score-card {
-      background: linear-gradient(135deg, rgba(92,225,230,0.08), rgba(74,222,128,0.05));
-      border: 1px solid rgba(92,225,230,0.2);
-      border-radius: 16px;
-      padding: 1.25rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .cc-score-number {
-      font-size: 3.5rem;
-      font-weight: 900;
-      line-height: 1;
-      background: linear-gradient(135deg, #5CE1E6, #4ADE80);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .cc-score-label {
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #5CE1E6;
-      font-family: var(--font-mono);
-      margin-top: 0.25rem;
-    }
-    .cc-score-desc {
-      font-size: 0.7rem;
-      color: #4ADE80;
-      margin-top: 0.5rem;
-    }
-    .cc-bars { margin-bottom: 1rem; }
-    .cc-bar-row {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .cc-bar-label {
-      font-size: 0.55rem;
-      color: #555;
-      font-family: var(--font-mono);
-      width: 50px;
-      flex-shrink: 0;
-    }
-    .cc-bar-track {
-      flex: 1;
-      height: 4px;
-      background: #1a2a1a;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .cc-bar-fill {
-      height: 100%;
-      border-radius: 2px;
-      background: linear-gradient(90deg, #4ADE80, #5CE1E6);
-    }
-    .cc-bar-val {
-      font-size: 0.55rem;
-      color: #5CE1E6;
-      font-family: var(--font-mono);
-      width: 30px;
-      text-align: right;
-      flex-shrink: 0;
-    }
-    .cc-report {
-      background: rgba(74,222,128,0.05);
-      border: 1px solid rgba(74,222,128,0.15);
-      border-radius: 10px;
-      padding: 0.75rem;
-    }
-    .cc-report-header {
-      font-size: 0.55rem;
-      color: #4ADE80;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-family: var(--font-mono);
-      margin-bottom: 0.4rem;
-    }
-    .cc-report-user {
-      font-size: 0.65rem;
-      color: #aaa;
-      margin-bottom: 0.2rem;
-    }
-    .cc-report-user strong { color: #5CE1E6; }
-    .cc-report-text {
-      font-size: 0.65rem;
-      color: #888;
-      line-height: 1.5;
-      font-style: italic;
+        0 50px 110px rgba(0,0,0,0.55),
+        0 0 0 1px rgba(255,255,255,0.04);
     }
 
     /* STORY SECTION */
@@ -438,6 +289,7 @@
     <ul class="fr-nav__links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="codclimb.html" class="active">CodClimb</a></li>
+      <li><a href="adventures.html">Adventures</a></li>
       <li><a href="index.html#photography">Photography</a></li>
       <li><a href="index.html#videography">Videography</a></li>
       <li><a href="about.html">About</a></li>
@@ -453,8 +305,8 @@
     <div class="cc-hero__grid">
       <div>
         <div class="cc-hero__eyebrow">
-          <span class="cc-hero__badge">MVP &mdash; In Development</span>
-          <span class="cc-hero__status">Swift iOS &middot; 2025</span>
+          <span class="cc-hero__badge">&#9679; Live on the App Store</span>
+          <span class="cc-hero__status">Swift iOS &middot; iOS 17+ &middot; Free</span>
         </div>
         <h1 class="cc-hero__title">
           <span class="brand-cod">Cod</span><span class="brand-climb">Climb</span>
@@ -465,60 +317,39 @@
         <p class="cc-hero__desc">
           No more gambling on the drive to the crag. CodClimb pulls weather data,
           runs it through a climbing-specific algorithm, and shows you a 0&ndash;100
-          score for your crag — right now, for the next 48 hours. Backed by live
-          community condition reports from climbers already at the wall.
+          score for your crag — right now, hour by hour, seven days out. Backed by
+          live community condition reports from climbers already at the wall.
+          Designed, coded, and shipped solo.
         </p>
         <div class="cc-hero__ctas">
-          <a href="#features" class="btn btn-primary">See Features &darr;</a>
-          <a href="#story" class="btn btn-outline">The Story</a>
+          <a href="https://apps.apple.com/app/id6769539741" target="_blank" class="btn btn-primary">Download on the App Store &#8599;</a>
+          <a href="https://codclimb.com" target="_blank" class="btn btn-outline">codclimb.com &#8599;</a>
+        </div>
+        <div style="display:flex;gap:2.25rem;margin-top:2.25rem;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:1.4rem;font-weight:700;color:var(--text);line-height:1;">237</div>
+            <div style="font-size:0.65rem;color:var(--text-dim);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.3rem;">US crags</div>
+          </div>
+          <div>
+            <div style="font-size:1.4rem;font-weight:700;color:var(--text);line-height:1;">40<span style="color:var(--accent);">+</span></div>
+            <div style="font-size:0.65rem;color:var(--text-dim);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.3rem;">States covered</div>
+          </div>
+          <div>
+            <div style="font-size:1.4rem;font-weight:700;color:var(--text);line-height:1;">7<span style="color:var(--accent);">-day</span></div>
+            <div style="font-size:0.65rem;color:var(--text-dim);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.3rem;">Hourly forecast</div>
+          </div>
+          <div>
+            <div style="font-size:1.4rem;font-weight:700;color:var(--text);line-height:1;">Free</div>
+            <div style="font-size:0.65rem;color:var(--text-dim);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.3rem;">No ads &middot; no subs</div>
+          </div>
         </div>
       </div>
 
       <div class="cc-phone-wrap">
-        <div class="cc-phone">
-          <div class="cc-screen">
-            <div class="cc-screen-header">
-              <div class="cc-app-name"><span class="c1">Cod</span><span class="c2">Climb</span></div>
-              <div class="cc-live-dot">LIVE</div>
-            </div>
-            <div class="cc-location">&#128205; Rumney, NH &mdash; Meadow Ledge</div>
-
-            <div class="cc-score-card">
-              <div class="cc-score-number">87</div>
-              <div class="cc-score-label">Climb Score</div>
-              <div class="cc-score-desc">&#10003; Excellent — Go climb!</div>
-            </div>
-
-            <div class="cc-bars">
-              <div class="cc-bar-row">
-                <span class="cc-bar-label">Humidity</span>
-                <div class="cc-bar-track"><div class="cc-bar-fill" style="width:34%"></div></div>
-                <span class="cc-bar-val">34%</span>
-              </div>
-              <div class="cc-bar-row">
-                <span class="cc-bar-label">Wind</span>
-                <div class="cc-bar-track"><div class="cc-bar-fill" style="width:20%"></div></div>
-                <span class="cc-bar-val">8 mph</span>
-              </div>
-              <div class="cc-bar-row">
-                <span class="cc-bar-label">Rain risk</span>
-                <div class="cc-bar-track"><div class="cc-bar-fill" style="width:5%"></div></div>
-                <span class="cc-bar-val">0%</span>
-              </div>
-              <div class="cc-bar-row">
-                <span class="cc-bar-label">Temp</span>
-                <div class="cc-bar-track"><div class="cc-bar-fill" style="width:68%"></div></div>
-                <span class="cc-bar-val">65&deg;F</span>
-              </div>
-            </div>
-
-            <div class="cc-report">
-              <div class="cc-report-header">&#129495; Community Report</div>
-              <div class="cc-report-user"><strong>Granite_King</strong> &bull; FlintSlab &bull; 1h ago</div>
-              <div class="cc-report-text">"Friction perfect, Zebra slabs bone dry. Go for it!"</div>
-            </div>
-          </div>
-        </div>
+        <img class="cc-shot"
+          src="images/codclimb/explore-130.webp"
+          alt="CodClimb 1.3 on the App Store — Explore tab with live 0–100 climbability scores"
+          loading="lazy" />
       </div>
     </div>
   </section>
@@ -562,7 +393,7 @@
           </div>
           <div>
             <div class="label">The Market</div>
-            <p style="font-size:0.9rem;">7.7M climbers in the US. Most climb outdoors at some point. There is no dominant app solving the "is my crag climbable right now?" problem with community data. Not yet.</p>
+            <p style="font-size:0.9rem;">7.7M climbers in the US. Most climb outdoors at some point. No dominant app solved the "is my crag climbable right now?" problem with community data &mdash; so in June 2026, CodClimb went live on the App Store to be it.</p>
           </div>
         </div>
       </div>
@@ -580,12 +411,22 @@
 
     <div class="cc-features">
       <div class="cc-feature-card">
-        <div class="cc-feature-card__icon">🌡️</div>
-        <div class="cc-feature-card__title">Weather Intelligence Score</div>
+        <div class="cc-feature-card__icon">🎯</div>
+        <div class="cc-feature-card__title">0&ndash;100 Climbability Score</div>
         <p class="cc-feature-card__body">
-          A 0&ndash;100 score built specifically for climbing — weighing humidity, dew point, wind,
-          temperature, and precipitation probability in a formula that matches real friction conditions,
-          not just comfort.
+          One number per crag, built from five weighted factors — temperature, dryness, humidity,
+          wind, and cloud cover. Fully transparent: tap any factor for a plain-English breakdown
+          of what's driving the score.
+        </p>
+      </div>
+
+      <div class="cc-feature-card">
+        <div class="cc-feature-card__icon">🗺️</div>
+        <div class="cc-feature-card__title">Score Map &amp; Smart Filters</div>
+        <p class="cc-feature-card__body">
+          All 237 crags on a live map with color-coded score pins. Filter by discipline —
+          sport, trad, boulder, or ice — plus rock type, sun exposure, and region.
+          Green means go, red means rest day.
         </p>
       </div>
 
@@ -593,46 +434,37 @@
         <div class="cc-feature-card__icon">🧗</div>
         <div class="cc-feature-card__title">Live Community Reports</div>
         <p class="cc-feature-card__body">
-          Climbers post condition updates from the crag — specific walls, specific routes.
-          Wet rock? Dry rock? Seeping? Someone who's there right now can tell you. Filter by route,
-          sector, or time.
+          Real climbers post real-time conditions with up to 4 photos — seepage, dry sectors,
+          crowds, fixed gear. Threaded comments and thumbs-up float the best beta to the top.
         </p>
       </div>
 
       <div class="cc-feature-card">
-        <div class="cc-feature-card__icon">📸</div>
-        <div class="cc-feature-card__title">Photo Reporting</div>
+        <div class="cc-feature-card__icon">📈</div>
+        <div class="cc-feature-card__title">7-Day &amp; Hourly Forecast</div>
         <p class="cc-feature-card__body">
-          Attach a photo to your condition report. A wet seam, a dry hold, a sunrise on the cliff face.
-          Visual proof beats text any day. Build the visual history of your local crag.
+          Hour-by-hour crag scores, a full weather meteogram, rain-timing detail, drying countdown,
+          and a draggable sun/shade timeline computed from each wall's aspect. Time your send.
         </p>
       </div>
 
       <div class="cc-feature-card">
-        <div class="cc-feature-card__icon">🏅</div>
-        <div class="cc-feature-card__title">Reputation System</div>
+        <div class="cc-feature-card__icon">🔔</div>
+        <div class="cc-feature-card__title">Trip Planner &amp; Alerts</div>
         <p class="cc-feature-card__body">
-          The more you report, the higher your rank. From <em>Chalk Bag</em> to <em>Crag Legend</em>.
-          Community trust is earned in the field. Your reputation is visible to other climbers,
-          so quality reports get respected.
+          Arm a trip and get a day-before briefing, a morning-of update, and a push alert if rain
+          is about to hit the crag. Or set a score threshold on your home crag and get pinged
+          the moment it turns good.
         </p>
       </div>
 
       <div class="cc-feature-card">
-        <div class="cc-feature-card__icon">📅</div>
-        <div class="cc-feature-card__title">48-Hour Forecast View</div>
+        <div class="cc-feature-card__icon">⚖️</div>
+        <div class="cc-feature-card__title">Scoring That Fits You</div>
         <p class="cc-feature-card__body">
-          Plan your next two days at a glance. Hourly Climb Scores let you pick the perfect
-          window — whether you want morning conditions or an afternoon session.
-        </p>
-      </div>
-
-      <div class="cc-feature-card">
-        <div class="cc-feature-card__icon">📍</div>
-        <div class="cc-feature-card__title">Crag Database</div>
-        <p class="cc-feature-card__body">
-          Search for any crag by name or location. Community-sourced crag profiles let climbers
-          add local knowledge — shade/sun orientation, typical drying time, access notes.
+          Tune each factor's weight to your style, set your personal temperature comfort, and pick
+          sun or shade preference. Mixed crags score Exposed and Overhang walls separately —
+          overhangs win on wet days.
         </p>
       </div>
     </div>
@@ -728,16 +560,17 @@
   <!-- VISION -->
   <section class="section container">
     <div class="cc-vision">
-      <span class="label">What's Next</span>
-      <h2>Launch is coming this summer.</h2>
+      <span class="label">It's Live</span>
+      <h2>Shipped. On the App Store now.</h2>
       <p>
-        CodClimb MVP is nearly ready. This June, I'm heading to the crag every day — climbing,
-        reporting, testing, and building. The plan: launch on the App Store, grow it through
-        Instagram, TikTok, and 小红书, with me as the first power user.
-        Not just a builder. The actual target user.
+        CodClimb launched publicly in June 2026 — free, no subscription, no ads.
+        Now it's about the community: owning the Northeast crag by crag, climbing and
+        reporting every week, and growing it through Instagram, TikTok, and 小红书.
+        Not just the builder. The first power user.
       </p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="https://www.instagram.com/fr_studio_art/" target="_blank" class="btn btn-primary">Follow on Instagram</a>
+        <a href="https://apps.apple.com/app/id6769539741" target="_blank" class="btn btn-primary">Download on the App Store &#8599;</a>
+        <a href="https://instagram.com/codclimb" target="_blank" class="btn btn-outline">@codclimb on Instagram &#8599;</a>
         <a href="about.html" class="btn btn-outline">About Frank</a>
       </div>
     </div>

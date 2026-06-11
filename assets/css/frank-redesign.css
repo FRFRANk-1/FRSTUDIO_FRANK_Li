@@ -1,22 +1,23 @@
 /* ============================================================
    FRANK LI — Personal Brand Design System
    Full redesign: frank-redesign.css
+   Dark theme — deep charcoal + CodClimb cyan accent
    ============================================================ */
 
 /* ── RESET & BASE ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:         #e6f8fc;
-  --surface:    #f4fcfe;
-  --surface-2:  #d4eef5;
-  --border:     #a8d8e8;
-  --text:       #0d1b2a;
-  --text-muted: #3a5f70;
-  --text-dim:   #7aacba;
-  --accent:     #0891b2;      /* deep teal — readable on light bg */
-  --accent-dim: rgba(8,145,178,0.1);
-  --accent-warm:#c05621;      /* warm orange */
+  --bg:         #07090b;
+  --surface:    #0d1114;
+  --surface-2:  #151b20;
+  --border:     #222b32;
+  --text:       #eef3f6;
+  --text-muted: #a3b2bd;
+  --text-dim:   #66767f;
+  --accent:     #5CE1E6;      /* CodClimb cyan */
+  --accent-dim: rgba(92,225,230,0.12);
+  --accent-warm:#ff9e64;      /* warm orange */
   --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
   --font-mono:  'Roboto Mono', 'Fira Code', monospace;
   --radius:     8px;
@@ -36,6 +37,8 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+
+::selection { background: rgba(92,225,230,0.25); color: var(--text); }
 
 /* ── TYPOGRAPHY ───────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
@@ -103,7 +106,7 @@ img { max-width: 100%; display: block; }
 }
 
 .fr-nav.scrolled {
-  background: rgba(230,248,252,0.92);
+  background: rgba(7,9,11,0.88);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
@@ -133,14 +136,14 @@ img { max-width: 100%; display: block; }
 .fr-nav__links a.active { color: var(--accent); }
 
 .fr-nav__links .nav-cta {
-  color: var(--bg);
+  color: #052a2d;
   background: var(--accent);
   padding: 0.5rem 1.25rem;
   border-radius: var(--radius);
   font-weight: 600;
   transition: opacity var(--transition);
 }
-.fr-nav__links .nav-cta:hover { opacity: 0.85; color: var(--bg); }
+.fr-nav__links .nav-cta:hover { opacity: 0.85; color: #052a2d; }
 
 /* Mobile nav toggle */
 .nav-toggle {
@@ -161,9 +164,6 @@ img { max-width: 100%; display: block; }
   transition: transform var(--transition);
 }
 
-/* btn-primary text must stay dark on light-bg accent */
-.btn-primary { color: #fff; }
-
 /* ── BUTTONS ──────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
@@ -181,11 +181,11 @@ img { max-width: 100%; display: block; }
 
 .btn-primary {
   background: var(--accent);
-  color: var(--bg);
+  color: #052a2d;
 }
 .btn-primary:hover {
   opacity: 0.88;
-  color: var(--bg);
+  color: #052a2d;
   transform: translateY(-1px);
 }
 
@@ -328,7 +328,7 @@ img { max-width: 100%; display: block; }
     display: none;
     position: fixed;
     inset: 0;
-    background: #e6f8fc;
+    background: rgba(7,9,11,0.98);
     flex-direction: column;
     align-items: center;
     justify-content: center;

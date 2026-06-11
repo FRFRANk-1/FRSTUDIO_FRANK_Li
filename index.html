@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Frank Li — Engineer · Creator · Explorer</title>
-  <meta name="description" content="Runcheng (Frank) Li — Software engineer, content creator, and outdoor enthusiast based in Boston, MA. Building CodClimb, shooting with Canon R6II, chasing powder on black runs." />
+  <meta name="description" content="Runcheng (Frank) Li — Software engineer, content creator, and outdoor enthusiast based in Boston, MA. Built CodClimb — live on the App Store — shooting with Canon R6II, chasing powder on black runs." />
   <link rel="icon" href="images/favicons/camera.png" />
 
   <!-- Fonts -->
@@ -197,124 +197,16 @@
       justify-content: center;
     }
     .codclimb-feature__visual {
-      background: linear-gradient(135deg, #0e1f2b 0%, #0a1a14 50%, #111 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: linear-gradient(180deg, #0c3323 0%, #1a603d 100%);
       position: relative;
       overflow: hidden;
     }
-    .codclimb-feature__visual::before {
-      content: '';
+    .codclimb-feature__shot {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 30% 40%, rgba(92,225,230,0.08) 0%, transparent 60%),
-        radial-gradient(circle at 70% 70%, rgba(0,180,80,0.06) 0%, transparent 50%);
-    }
-    .app-mockup {
-      position: relative;
-      z-index: 1;
-      width: 220px;
-    }
-    .app-mockup__phone {
-      background: #111;
-      border: 2px solid #333;
-      border-radius: 32px;
-      padding: 1.5rem 1rem;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
-    }
-    .app-mockup__screen {
-      background: #0a1a14;
-      border-radius: 20px;
-      padding: 1.25rem 1rem;
-      height: 340px;
-      overflow: hidden;
-    }
-    .app-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-    }
-    .app-logo-text {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #5CE1E6;
-      letter-spacing: -0.02em;
-    }
-    .app-logo-text span { color: #4ADE80; }
-    .score-display {
-      text-align: center;
-      margin: 1rem 0;
-      padding: 1rem;
-      background: rgba(92,225,230,0.05);
-      border: 1px solid rgba(92,225,230,0.15);
-      border-radius: 12px;
-    }
-    .score-big {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #5CE1E6;
-      line-height: 1;
-    }
-    .score-label {
-      font-size: 0.6rem;
-      color: #4ADE80;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: 0.25rem;
-      font-family: var(--font-mono);
-    }
-    .condition-bars { margin-top: 0.75rem; }
-    .cond-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.4rem;
-    }
-    .cond-label { font-size: 0.55rem; color: #666; font-family: var(--font-mono); }
-    .cond-bar {
-      height: 4px;
-      background: #1a2a1a;
-      border-radius: 2px;
-      width: 60%;
-      overflow: hidden;
-    }
-    .cond-fill {
+      width: 100%;
       height: 100%;
-      border-radius: 2px;
-      background: linear-gradient(90deg, #4ADE80, #5CE1E6);
-    }
-    .cond-val { font-size: 0.55rem; color: #5CE1E6; font-family: var(--font-mono); }
-    .community-report {
-      margin-top: 0.75rem;
-      padding: 0.5rem 0.75rem;
-      background: rgba(74,222,128,0.06);
-      border: 1px solid rgba(74,222,128,0.15);
-      border-radius: 8px;
-    }
-    .report-tag {
-      font-size: 0.5rem;
-      color: #4ADE80;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-family: var(--font-mono);
-    }
-    .report-text {
-      font-size: 0.6rem;
-      color: #aaa;
-      margin-top: 0.2rem;
-      line-height: 1.4;
-    }
-    .report-avatar {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      margin-right: 0.25rem;
-      vertical-align: middle;
+      object-fit: contain;
     }
     .codclimb-feature__title {
       font-size: clamp(1.8rem, 3vw, 2.5rem);
@@ -346,6 +238,50 @@
       background: var(--accent-dim);
     }
 
+    /* ADVENTURES */
+    .adventure-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .adventure-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--surface-2);
+      display: block;
+    }
+    .adventure-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .adventure-card:hover img { transform: scale(1.05); }
+    .adventure-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 45%, transparent 75%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.25rem;
+    }
+    .adventure-card__sport {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.3rem;
+    }
+    .adventure-card__title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.3;
+    }
     /* CREATIVE WORK */
     .work-grid {
       display: grid;
@@ -523,8 +459,9 @@
     /* RESPONSIVE */
     @media (max-width: 900px) {
       .pillars { grid-template-columns: 1fr; }
+      .adventure-grid { grid-template-columns: repeat(2, 1fr); }
       .codclimb-feature { grid-template-columns: 1fr; }
-      .codclimb-feature__visual { min-height: 300px; }
+      .codclimb-feature__visual { min-height: 480px; }
       .work-grid { grid-template-columns: 1fr; }
       .about-teaser { grid-template-columns: 1fr; }
       .about-teaser__visual { display: none; }
@@ -540,6 +477,7 @@
     <ul class="fr-nav__links" id="navLinks">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="codclimb.html">CodClimb</a></li>
+      <li><a href="adventures.html">Adventures</a></li>
       <li><a href="#photography">Photography</a></li>
       <li><a href="#videography">Videography</a></li>
       <li><a href="about.html">About</a></li>
@@ -560,9 +498,9 @@
       </p>
       <p class="hero__desc fade-up-3">
         I build software, shoot with a Canon R6 II, and chase powder on black runs whenever I can.
-        MS Computer Science &middot; 4-year content creator &middot; Currently building
+        MS Computer Science &middot; 4-year content creator &middot; Built
         <a href="codclimb.html" style="color:var(--accent);font-weight:600;">CodClimb</a>,
-        a Swift app for outdoor climbers.
+        a climbing-conditions app now live on the App Store.
       </p>
       <div class="hero__ctas fade-up-4">
         <a href="codclimb.html" class="btn btn-primary">See CodClimb &rarr;</a>
@@ -657,68 +595,81 @@
     <div class="codclimb-feature">
       <div class="codclimb-feature__content">
         <div class="feature-pills">
-          <span class="feature-pill feature-pill--active">Swift iOS</span>
-          <span class="feature-pill">Open-Meteo API</span>
+          <span class="feature-pill feature-pill--active">Live on the App Store</span>
+          <span class="feature-pill">Swift iOS</span>
+          <span class="feature-pill">237 Crags</span>
           <span class="feature-pill">Community Reports</span>
-          <span class="feature-pill">AI Scoring</span>
         </div>
-        <h3 class="codclimb-feature__title">Know before you drive to the crag.</h3>
+        <h3 class="codclimb-feature__title">Know before you go.</h3>
         <p class="codclimb-feature__body">
           Born from the frustration of driving 2 hours to Rumney, NH only to find wet rock.
           CodClimb combines real-time weather data with community condition reports to give
-          climbers a 0&ndash;100 score for any crag, any hour.
+          climbers a 0&ndash;100 score for 237 US crags &mdash; any crag, any hour.
         </p>
         <p class="codclimb-feature__body" style="margin-bottom:0">
           Climbers earn reputation as they report — building a live, human-verified
           conditions layer that no weather API alone can provide.
         </p>
-        <div style="margin-top:2rem;">
-          <a href="codclimb.html" class="btn btn-primary">Learn More &rarr;</a>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="https://apps.apple.com/app/id6769539741" target="_blank" class="btn btn-primary">Download on the App Store &#8599;</a>
+          <a href="codclimb.html" class="btn btn-outline">Learn More &rarr;</a>
         </div>
       </div>
 
       <div class="codclimb-feature__visual">
-        <div class="app-mockup">
-          <div class="app-mockup__phone">
-            <div class="app-mockup__screen">
-              <div class="app-header">
-                <div class="app-logo-text">Cod<span>Climb</span></div>
-                <span style="font-size:0.6rem;color:#4ADE80;font-family:monospace;">&#9679; LIVE</span>
-              </div>
-              <div style="font-size:0.55rem;color:#666;font-family:monospace;margin-bottom:0.5rem;">Rumney, NH &mdash; Today, 10:00am</div>
-              <div class="score-display">
-                <div class="score-big">87</div>
-                <div class="score-label">Climb Score</div>
-              </div>
-              <div class="condition-bars">
-                <div class="cond-row">
-                  <span class="cond-label">Humidity</span>
-                  <div class="cond-bar"><div class="cond-fill" style="width:35%"></div></div>
-                  <span class="cond-val">34%</span>
-                </div>
-                <div class="cond-row">
-                  <span class="cond-label">Wind</span>
-                  <div class="cond-bar"><div class="cond-fill" style="width:25%"></div></div>
-                  <span class="cond-val">8mph</span>
-                </div>
-                <div class="cond-row">
-                  <span class="cond-label">Precip</span>
-                  <div class="cond-bar"><div class="cond-fill" style="width:5%"></div></div>
-                  <span class="cond-val">0%</span>
-                </div>
-              </div>
-              <div class="community-report">
-                <div class="report-tag">🧗 Community Report</div>
-                <div class="report-text">
-                  <span class="report-avatar"></span>
-                  <strong style="color:#aaa">Granite_King</strong> &mdash; 2h ago<br />
-                  "Friction dry, perfect. Zebra slabs in great shape."
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img class="codclimb-feature__shot"
+          src="images/codclimb/explore-130.webp"
+          alt="CodClimb 1.3 — Explore tab with live 0–100 climbability scores for 237 US crags"
+          loading="lazy" />
       </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ADVENTURES -->
+  <section class="section container" id="adventures">
+    <div class="section-header">
+      <div>
+        <span class="label">Beyond the Desk</span>
+        <h2>Adventures</h2>
+        <p>Climb &middot; Ski &middot; Surf &middot; Hiking &mdash; the field log, shot across New England and the West</p>
+      </div>
+      <a href="adventures.html" class="btn btn-outline">Full Gallery &rarr;</a>
+    </div>
+
+    <div class="adventure-grid">
+      <a href="adventures.html#climb" class="adventure-card">
+        <img src="images/adventures-web/climb/fulls/climb-25.jpg" alt="Sea-cliff climbing above the Atlantic" loading="lazy" style="object-position:62% center;" />
+        <div class="adventure-card__overlay">
+          <div class="adventure-card__sport">🧗 Climbing</div>
+          <div class="adventure-card__title">V5&ndash;V6 boulder &middot; 5.10&ndash;5.11 lead</div>
+        </div>
+      </a>
+
+      <a href="adventures.html#ski" class="adventure-card">
+        <img src="images/adventures-web/ski/fulls/ski-10.jpg" alt="Frank skiing at Deer Valley, Utah" loading="lazy" />
+        <div class="adventure-card__overlay">
+          <div class="adventure-card__sport">⛷ Skiing</div>
+          <div class="adventure-card__title">Powder &amp; black runs, UT to NE</div>
+        </div>
+      </a>
+
+      <a href="adventures.html#surf" class="adventure-card">
+        <img src="images/adventures-web/surf/fulls/surf-01.jpg" alt="Frank surfing a New England wave" loading="lazy" />
+        <div class="adventure-card__overlay">
+          <div class="adventure-card__sport">🌊 Surfing</div>
+          <div class="adventure-card__title">Cold-water New England swell</div>
+        </div>
+      </a>
+
+      <a href="adventures.html#hiking" class="adventure-card">
+        <img src="images/adventures-web/hiking/fulls/hiking-01.jpg" alt="Winter scramble up a snowy New England gully" loading="lazy" />
+        <div class="adventure-card__overlay">
+          <div class="adventure-card__sport">🥾 Hiking</div>
+          <div class="adventure-card__title">Ridgelines, summits, all seasons</div>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -853,7 +804,7 @@
         </p>
         <p style="margin-bottom:2rem;">
           I believe the best builders are the ones who deeply <em>live</em> the problems they solve.
-          That's why I'm building CodClimb &mdash; because I climb outside twice a week and I've driven
+          That's why I built CodClimb &mdash; because I climb outside twice a week and I've driven
           to a wet crag one too many times.
         </p>
         <a href="about.html" class="btn btn-primary">Read My Story &rarr;</a>
