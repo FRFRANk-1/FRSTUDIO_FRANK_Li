@@ -1,528 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Frank Li</title>
-  <link rel="icon" href="images/favicons/camera.png">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/magnific-popup.css">
-  <link rel="stylesheet" href="assets/css/jquery-ui.css">
-  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-
-  <link rel="stylesheet" href="assets/css/lightgallery.min.css">    
-
-  <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
-
-  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
-  <link rel="stylesheet" href="assets/css/swiper.css">
-
-  <link rel="stylesheet" href="assets/css/aos.css">
-
-  <link rel="stylesheet" href="assets/css/style.css">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cars — Frank Li</title>
+  <meta name="description" content="Cars — photography by Runcheng (Frank) Li. Miatas, drift builds, and parking-lot finds — Newport, RI and around New England, mostly after dark." />
+  <link rel="icon" href="images/favicons/camera.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/frank-redesign.css" />
+  <style>
+    .gal-hero { padding-top: 9rem; padding-bottom: 1rem; }
+    .gal-hero__eyebrow { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .gal-hero__eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); }
+    .gal-hero h1 { font-size: clamp(2.6rem, 6.5vw, 4.8rem); letter-spacing: -0.03em; line-height: 1.03; margin-bottom: 1.1rem; }
+    .gal-hero__sub { max-width: 620px; color: var(--text-muted); font-size: 1.04rem; margin-bottom: 1.75rem; }
+    .gal-hero__meta { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .gal-count { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim);
+      border: 1px solid var(--border); padding: 0.3rem 0.85rem; border-radius: 100px; }
+    .gal-back { font-size: 0.85rem; color: var(--text-muted); }
+    .gal-back:hover { color: var(--accent); }
+    .gal-section { padding: 2.5rem 0 1rem; }
+    .adv-grid { columns: 3; column-gap: 0.75rem; }
+    .adv-grid a { display: block; break-inside: avoid; margin-bottom: 0.75rem; border-radius: var(--radius);
+      overflow: hidden; background: var(--surface-2); position: relative; cursor: zoom-in; }
+    .adv-grid img { width: 100%; transition: transform 0.45s ease, opacity 0.45s ease; opacity: 0.92; }
+    .adv-grid a:hover img { transform: scale(1.035); opacity: 1; }
+    .lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(4,6,8,0.96); display: none; align-items: center; justify-content: center; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 92vw; max-height: 84vh; border-radius: 6px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); }
+    .lightbox__btn { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.06); color: #fff; font-size: 1.2rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: background var(--transition); backdrop-filter: blur(6px); }
+    .lightbox__btn:hover { background: rgba(92,225,230,0.25); }
+    .lightbox__prev { left: 1.25rem; } .lightbox__next { right: 1.25rem; }
+    .lightbox__close { top: 1.25rem; right: 1.25rem; transform: none; }
+    .lightbox__cap { position: absolute; bottom: 1.4rem; left: 50%; transform: translateX(-50%); text-align: center;
+      max-width: 90vw; font-size: 0.9rem; color: rgba(255,255,255,0.92); }
+    .lightbox__cap small { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: rgba(255,255,255,0.55); margin-top: 0.25rem; letter-spacing: 0.04em; }
+    @media (max-width: 900px) { .adv-grid { columns: 2; } }
+    @media (max-width: 540px) { .adv-grid { columns: 2; column-gap: 0.5rem; } .adv-grid a { margin-bottom: 0.5rem; } .lightbox__btn { width: 40px; height: 40px; } }
+  </style>
 </head>
 <body>
+  <nav class="fr-nav" id="navbar">
+    <a href="index.html" class="fr-nav__logo">Frank<span>.</span></a>
+    <ul class="fr-nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="codclimb.html">CodClimb</a></li>
+      <li><a href="adventures.html">Adventures</a></li>
+      <li><a href="photography.html" class="active">Photography</a></li>
+      <li><a href="videography.html">Videography</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
 
-  <div class="site-wrap">
-
-    <div class="site-mobile-menu">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-    <header class="site-navbar py-3" role="banner">
-      <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-6 col-xl-3" data-aos="fade-down">
-              <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><span style="color: rgb(113, 217, 243)">Frank li</span></a></h1>
-              <h6>Creative producer | Digital Creator</h6>
-              <h6>Boston, MA / Westerly, RI</h6>
-            </div>
-
-          <div class="col-10 col-md-7 d-none d-xl-block" data-aos="fade-down">
-            <nav
-          class="site-navigation position-relative text-right text-lg-center"
-          role="navigation"
-        >
-          <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-            <li class="active">
-              <a href="index.html">Home</a>
-            </li>
-            <li class="has-children">
-              <a href="#">Photography Portfolio</a>
-              <ul class="dropdown">
-                <li class="has-children">
-                  <a href="#">Portrait</a>
-                  <ul class="dropdown">
-                    <li>
-                      <a href="portraitCouple.html">Couple</a>
-                    </li>
-                    <li><a href="portraitWedding.html">Wedding</a></li>
-                    <li>
-                      <a href="portraitIndividual.html">Individual</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <!-- <li class="has-children">
-                  <a href="#">City</a>
-                  <ul class="dropdown">
-                    <li>
-                      <a href="cityWestRegion.html">West Coast</a>
-                    </li>
-                    <li>
-                      <a href="cityMidWestRegion.html">Midwest Region</a>
-                    </li>
-                    <li>
-                      <a href="cityNorthRegion.html">North Region</a>
-                    </li>
-                    <li>
-                      <a href="citySouthRegion.html">South Region</a>
-                  </ul>
-                </li> -->
-
-                <li class="has-children">
-                  <a href="#">Travel</a>
-                  <ul class="dropdown">
-                    
-                    <li>
-                      <a href="travelBeach.html">Beach</a>
-                    </li>
-                    <li>
-                      <a href="landmarkindex.html">Landmark</a>
-                    </li>
-                    <li>
-                      <a href="travelLanscape.html">Aeroplane</a>
-                    </li>
-
-                    <li>
-                      <a href="cityWestRegion.html">West Coast</a>
-                    </li>
-                    <li>
-                      <a href="cityMidWestRegion.html">Midwest </a>
-                    </li>
-                    <li>
-                      <a href="cityNorthRegion.html">East Coast</a>
-                    </li>
-                    <li>
-                      <a href="citySouthRegion.html">South </a>
-                    </li>
-
-                    <!-- <li>
-                      <a href="travelNature.html">Nature</a>
-                    </li>
-                    <li>
-                      <a href="travelMe.html">Me On The Road</a>
-                    </li> -->
-                  </ul>
-                </li>
-                <li class="has-children">
-                  <a href="#">Eco-Portraits</a>
-                  <ul class="dropdown">
-                    <li>
-                      <a href="Human&Nature.html">Human & Nature</a>
-                    </li>
-                    <li>
-                      <a href="Animal&Nature.html">Animal & Nature</a>
-                    </li>
-                    <li>
-                      <a href="DomesticatedAnimal.html">Domesticated Animal</a>
-                    </li>
-                    <!-- <li>
-                      <a href="OutdoorLifestyle.html">Lifestyle Embrace With Nature</a>
-                    </li>
-                    <li>
-                      <a href="OutdoorExtremeActivities.html">Outdoor Activities</a>
-                    </li>
-                    <li>
-                      <a href="OutdoorHiking.html">Hiking</a>
-                    </li>
-                    <li>
-                      <a href="OutdoorMTB.html">Mountain Biking</a>
-                    </li>
-                    <li>
-                      <a href="OutdoorKayaking.html">Kayaking</a>
-                    </li>
-                    <li>
-                      <a href="OutdoorRafting.html">Rafting</a>
-                    </li>
-                    <li>
-                      <a href="OutdoorBloudering.html">Bloudering</a>
-                    </li>
-                    <li>
-                      <a href="OutdoorRockClimbing.html">Rock Climbing</a>
-                    </li>
-                    <li>
-                      <a href="OutdoorSkiing.html">Skiing</a>
-                    </li>
-                    <li>
-                      <a href="OutdoorSnowboarding.html">Snowboarding</a>
-                    </li> -->
-                    
-                  </ul>
-                </li>
-
-                <!-- <li class="has-children">
-                  <a href="#">Animals</a>
-                  <ul class="dropdown">
-                    <li>
-                      <a href="AnimalWildLife.html">Gallery</a>  
-                    </li> -->
-                    <!-- <li>
-                      <a href="AnimalCat.html">Cat</a>
-                    </li> -->
-                  <!-- </ul>
-                </li> -->
-               
-                <li class="has-children">
-                  <a href="CarGallery.html">Car </a>
-                  <ul class="dropdown">
-                    <li>
-                      <a href="CarGallery.html">Gallery</a>
-                    </li>
-                  </ul>
-              </li>
-                <!-- <li class="has-children">
-                  <a href="#">Projects</a>
-                  <ul class="dropdown"> -->
-                    <!-- <li class="has-children">
-                      <a href="#">Photo Projects</a>
-                      <ul class="dropdown">
-                        <li>
-                          <a href="windowsoftheworld.html"
-                            >Windows of the World</a
-                          >
-                        </li>
-                        <li><a href="twowheels.html">Two Wheels</a></li>
-                      </ul>
-                    </li> -->
-                    <!-- <li class="has-children">
-                      <a href="#">Photo Projects</a>
-                      <ul class="dropdown">
-                        <li>
-                          <a href="webgiss.html">photographs</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li> -->
-              </ul>
-            </li>
-            <li class="has-children">
-              <a href="#">Videography Portfolio</a>
-              <ul class="dropdown">
-                <li class="has-children">
-                  <a href="#">Commerical Event</a>
-                  <ul class="dropdown">
-                    <li>
-                      <a href="commercialWedding.html">Wedding</a>
-                    </li>
-                    <li>
-                      <a href="commercialHarvardIvy_22-23.html">Harvard Ivy League Lunar</a>
-                    </li>
-                    <!-- <li>
-                      <a href="commercialBostonFashion.html">Boston Fashion Show</a>
-                    </li> -->
-                  </ul>
-                </li>
-                <li class="has-children">
-                  <a href="DronePostProduction.html">Drone Post Production</a>
-                  <ul class="dropdown">
-                    <li>
-                      <a href="droneLandscape.html">Landscape</a>
-                    </li>
-                    <li>
-                      <a href="droneUniversity.html">University</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="has-children">
-                  <a href="#">Vlog</a>
-                  <ul class="dropdown">
-                    
-                       <li>
-                          <a
-                            href="VlogWestRegion.html"
-                            >West Coast</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="vlogMidwestRegion.html"
-                            >MidWest</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="vlogNorthRegion.html"
-                            >East coast</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="vlogSouthRegion.html"
-                            >South </a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="vlogArtInDaily.html"
-                            >Daily Art In Life</a
-                          >
-                        </li>
-                      
-                   </ul>
-                 </li>
-                </li>
-                  
-                  <li class="has-children">
-                    <a href="#">Full-Videos-Platform</a>
-                    <ul class="dropdown">
-                      <li>
-                        <a href="https://space.bilibili.com/398891472"
-                          >BiliBili</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg"
-                          >Youtube</a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-              </ul>
-            </li>
-            
-            <li class="has-children">
-              <a href="about.html">About Me</a>
-              <ul class="dropdown">
-                <li><a href="about.html">Biography</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </li>
-            </ul>
-
-        </nav>
-        </div>
-        <div class="col-6 col-xl-2 text-right" data-aos="fade-down">
-          <div class="d-none d-xl-inline-block">
-            <ul class="site-menu js-clone-nav ml-auto list-unstyled d-flex text-right mb-0" data-class="social">
-              <li>
-                <a href="https://www.linkedin.com/in/runcheng-li-1b9748205/" class="pl-0 pr-3" target="_blank"><span class="icon-linkedin"></span></a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/fr_studio_art/" class="pl-3 pr-3"><span class="icon-instagram" target="_blank"></span></a>
-              </li>
-              <li>
-                <a href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg" class="pl-3 pr-3" target="_blank"><span class="icon-youtube-play"></span></a>
-              </li>
-            </ul>
-          </div>
-          <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-        </div>
-      </div>
+  <header class="gal-hero container">
+    <div class="gal-hero__eyebrow fade-up">Photography · Cars</div>
+    <h1 class="fade-up-2">Cars</h1>
+    <p class="gal-hero__sub fade-up-3">Miatas, drift builds, and parking-lot finds — Newport, RI and around New England, mostly after dark.</p>
+    <div class="gal-hero__meta fade-up-4">
+      <span class="gal-count">31 photos</span>
+      <a class="gal-back" href="photography.html">&#8592; All photography</a>
     </div>
   </header>
 
-    <div class="site-section"  data-aos="fade">
-      <div class="container-fluid">
+  <hr class="divider" style="margin-top:2rem;" />
 
-        <div class="row justify-content-center">
+  <section class="gal-section container">
+    <div class="adv-grid" id="grid"></div>
+  </section>
 
-          <div class="col-md-7">
-            <div class="row mb-5">
-              <div class="col-12 ">
-                <h2 class="site-section-heading text-center">Car Gallery </h2>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="row" id="lightgallery">
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/Dec_08_24_Miata_01.JPEG" data-sub-html="<h4>Newport, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/fulls/car/Dec_08_24_Miata_01.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/Dec_08_24_Miata_06.JPEG" data-sub-html="<h4>Newport, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/fulls/car/Dec_08_24_Miata_06.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/Dec_08_24_Miata_09.JPEG" data-sub-html="<h4>Newport, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/fulls/car/Dec_08_24_Miata_09.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/Dec_08_24_Surf_05.JPEG" data-sub-html="<h4>Newport, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/fulls/car/Dec_08_24_Surf_05.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/Miata_Point_Judith_24_01.JPEG" data-sub-html="<h4>Point Judith, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/fulls/car/Miata_Point_Judith_24_01.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/Dec_14_24Nantacket_06.JPEG" data-sub-html="<h4>Nantacket, MA| 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/fulls/car/Dec_14_24Nantacket_06.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/Dec_14_24Nantacket_05.JPEG" data-sub-html="<h4>Nantacket, MA| 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/fulls/car/Dec_14_24Nantacket_05.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/Dec_14_24Nantacket_08.JPEG" data-sub-html="<h4>Nantacket, MA| 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/fulls/car/Dec_14_24Nantacket_08.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/thumbs/10_08_23_WT_2.jpg" data-sub-html="<h4>Mount Washington, NH | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/thumbs/10_08_23_WT_2.jpg" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/ecophotography/June_15_24_Horse_1.JPEG" data-sub-html="<h4> Carrabassett Valley(Sugarloaf MT), Maine | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM </p>">
-            <a href="#"><img src="images/fulls/car/Thanksgiving_car_pic_01.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/Nov_24_drift_04.JPEG" data-sub-html="<h4> NY | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM </p>">
-            <a href="#"><img src="images/fulls/car/Nov_24_drift_04.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/thumbs/03_21_24_car_1.jpg" data-sub-html="<h4>Asahway, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/thumbs/03_21_24_car_1.jpg" alt="IMage" class="img-fluid"></a>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/thumbs/03_21_24_car_2.jpg" data-sub-html="<h4>Weekapaug, RI | 2024</h4><p>Canon R6 Mark ii + RF100mm f/2.8 L USM</p>">
-            <a href="#"><img src="images/thumbs/03_21_24_car_2.jpg" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/Beach/cd6a93bbe028ac954202e150b18f1365.jpg" data-sub-html="<h4> Manchester By the Sea, MA | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/fulls/Beach/cd6a93bbe028ac954202e150b18f1365.jpg" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/Beach/1cb8a02fa4e710f239ea3762c9a1dd33.jpeg" data-sub-html="<h4> Manchester By the Sea, MA | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/fulls/Beach/1cb8a02fa4e710f239ea3762c9a1dd33.jpeg" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/ecophotography/09_06_acadia_vw_1.jpg" data-sub-html="<h4> Acadia NP, ME | 2023</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/fulls/ecophotography/09_06_acadia_vw_1.jpg" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/Me_On_The_Road/Adirondack_Abnb_2023_1.jpg" data-sub-html="<h4> contry ABNB in Keesevile, NY | 2023</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM </p>">
-            <a href="#"><img src="images/fulls/Me_On_The_Road/Adirondack_Abnb_2023_1.jpg" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/thumbs/10_08_23_WT_1.jpeg" data-sub-html="<h4>Mount Washington, NH | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/thumbs/10_08_23_WT_1.jpeg" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/thumbs/03_07_24_car_cornell_1.jpg" data-sub-html="<h4> Ithaca, Ny| 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/thumbs/03_07_24_car_cornell_1.JPG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/Me_On_The_Road/port_kent_2023_1.jpg" data-sub-html="<h4> Port Kent, NY | 2023</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM </p>">
-            <a href="#"><img src="images/fulls/Me_On_The_Road/port_kent_2023_1.jpg" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/Me_On_The_Road/Vw_NY_Catskill_Camp_2023_1.jpeg" data-sub-html="<h4> Catskill, NY | 2023</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM </p>">
-            <a href="#"><img src="images/fulls/Me_On_The_Road/Vw_NY_Catskill_Camp_2023_1.jpeg" alt="IMage" class="img-fluid"></a>
-          </div>
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/06_01_24_KTM.JPEG" data-sub-html="<h4> A KTM, Beacon NY | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM </p>">
-            <a href="#"><img src="images/fulls/car/06_01_24_KTM.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-
-
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/05_24_24_vw_1.JPEG" data-sub-html="<h4> Weekapaug, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM </p>">
-            <a href="#"><img src="images/fulls/car/05_24_24_vw_1.JPEG" alt="IMage" class="img-fluid"></a>
-          </div>
-            
-            
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/thumbs/10_22_23_86_1.jpeg" data-sub-html="<h4>Burlingame, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-            <a href="#"><img src="images/thumbs/10_22_23_86_1.jpeg" alt="IMage" class="img-fluid"></a>
-            </div>
-            
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/thumbs/IMG_9914-min.JPG" data-sub-html="<h4>Cleverland, Ohio | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-              <a href="#"><img src="images/thumbs/IMG_9914-min.JPG" alt="IMage" class="img-fluid"></a>
-              </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/thumbs/IMG_0390.JPG" data-sub-html="<h4>Westerly, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-                <a href="#"><img src="images/thumbs/IMG_0390.JPG" alt="IMage" class="img-fluid"></a>
-            </div>
-                
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/10_03_24_vw_2.jpg" data-sub-html="<h4> Weekapaug, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-              <a href="#"><img src="images/fulls/car/10_03_24_vw_2.jpg" alt="IMage" class="img-fluid"></a>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/09_05_24_1.jpg" data-sub-html="<h4> East Matunuck, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-              <a href="#"><img src="images/fulls/car/09_05_24_1.jpg" alt="IMage" class="img-fluid"></a>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/09_24_24_1.jpg" data-sub-html="<h4> Narragansett, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-              <a href="#"><img src="images/fulls/car/09_24_24_1.jpg" alt="IMage" class="img-fluid"></a>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/10_03_24_vw_5.jpg" data-sub-html="<h4> Home, Ashaway, RI | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-              <a href="#"><img src="images/fulls/car/10_03_24_vw_5.jpg" alt="IMage" class="img-fluid"></a>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="images/fulls/car/10_06_24_86_1.jpg" data-sub-html="<h4> Lake George, NY | 2024</h4><p>Canon R6 Mark ii + RF24-240mm f/4-6.3 USM</p>">
-              <a href="#"><img src="images/fulls/car/10_06_24_86_1.jpg" alt="IMage" class="img-fluid"></a>
-            </div>
-
-        </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer py-4">
-      <div class="container-fluid text-center">
-        <p>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All rights reserved | Template by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </p>
-      </div>
-    </div>
-
-    
-
-    
-    
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer">
+    <img id="lightboxImg" src="" alt="" />
+    <button class="lightbox__btn lightbox__prev" id="lbPrev" aria-label="Previous">&#8592;</button>
+    <button class="lightbox__btn lightbox__next" id="lbNext" aria-label="Next">&#8594;</button>
+    <button class="lightbox__btn lightbox__close" id="lbClose" aria-label="Close">&#10005;</button>
+    <div class="lightbox__cap" id="lbCap"></div>
   </div>
-  <script src="assets/js/jquery-3.3.1.min.js"></script>
-  <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="assets/js/jquery-ui.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/owl.carousel.min.js"></script>
-  <script src="assets/js/jquery.stellar.min.js"></script>
-  <script src="assets/js/jquery.countdown.min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="assets/js/bootstrap-datepicker.min.js"></script>
-  <script src="assets/js/swiper.min.js"></script>
-  <script src="assets/js/aos.js"></script>
 
-  <script src="assets/js/picturefill.min.js"></script>
-  <script src="assets/js/lightgallery-all.min.js"></script>
-  <script src="assets/js/jquery.mousewheel.min.js"></script>
+  <footer class="fr-footer container" style="margin-top:3rem;">
+    <div class="fr-footer__inner">
+      <div>
+        <div style="font-weight:700;font-size:1rem;margin-bottom:0.25rem;">Frank Li</div>
+        <div class="fr-footer__copy">&copy; <script>document.write(new Date().getFullYear())</script> Runcheng (Frank) Li &mdash; Boston, MA</div>
+      </div>
+      <div class="fr-footer__social">
+        <a href="https://www.linkedin.com/in/runcheng-li-1b9748205/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/fr_studio_art/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://space.bilibili.com/398891472" target="_blank" rel="noopener">BiliBili</a>
+      </div>
+    </div>
+  </footer>
 
-  <script src="assets/js/main.js"></script>
-  
   <script>
-    $(document).ready(function(){
-      $('#lightgallery').lightGallery({
-        download: false,
-        share: false
-      });
-    });
-  </script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
+    const PHOTOS = [{"t": "images/fulls/car/Dec_08_24_Miata_01.JPEG", "f": "images/fulls/car/Dec_08_24_Miata_01.JPEG", "c": "Newport, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/Dec_08_24_Miata_06.JPEG", "f": "images/fulls/car/Dec_08_24_Miata_06.JPEG", "c": "Newport, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/Dec_08_24_Miata_09.JPEG", "f": "images/fulls/car/Dec_08_24_Miata_09.JPEG", "c": "Newport, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/Dec_08_24_Surf_05.JPEG", "f": "images/fulls/car/Dec_08_24_Surf_05.JPEG", "c": "Newport, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/Miata_Point_Judith_24_01.JPEG", "f": "images/fulls/car/Miata_Point_Judith_24_01.JPEG", "c": "Point Judith, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/Dec_14_24Nantacket_06.JPEG", "f": "images/fulls/car/Dec_14_24Nantacket_06.JPEG", "c": "Nantacket, MA| 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/Dec_14_24Nantacket_05.JPEG", "f": "images/fulls/car/Dec_14_24Nantacket_05.JPEG", "c": "Nantacket, MA| 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/Dec_14_24Nantacket_08.JPEG", "f": "images/fulls/car/Dec_14_24Nantacket_08.JPEG", "c": "Nantacket, MA| 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/thumbs/10_08_23_WT_2.jpg", "f": "images/thumbs/10_08_23_WT_2.jpg", "c": "Mount Washington, NH | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/Thanksgiving_car_pic_01.JPEG", "f": "images/fulls/ecophotography/June_15_24_Horse_1.JPEG", "c": "Carrabassett Valley(Sugarloaf MT), Maine | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/Nov_24_drift_04.JPEG", "f": "images/fulls/car/Nov_24_drift_04.JPEG", "c": "NY | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/thumbs/03_21_24_car_1.jpg", "f": "images/thumbs/03_21_24_car_1.jpg", "c": "Asahway, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/thumbs/03_21_24_car_2.jpg", "f": "images/thumbs/03_21_24_car_2.jpg", "c": "Weekapaug, RI | 2024", "s": "Canon R6 Mark ii + RF100mm f/2.8 L USM"}, {"t": "images/fulls/Beach/cd6a93bbe028ac954202e150b18f1365.jpg", "f": "images/fulls/Beach/cd6a93bbe028ac954202e150b18f1365.jpg", "c": "Manchester By the Sea, MA | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/Beach/1cb8a02fa4e710f239ea3762c9a1dd33.jpeg", "f": "images/fulls/Beach/1cb8a02fa4e710f239ea3762c9a1dd33.jpeg", "c": "Manchester By the Sea, MA | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/ecophotography/09_06_acadia_vw_1.jpg", "f": "images/fulls/ecophotography/09_06_acadia_vw_1.jpg", "c": "Acadia NP, ME | 2023", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/Me_On_The_Road/Adirondack_Abnb_2023_1.jpg", "f": "images/fulls/Me_On_The_Road/Adirondack_Abnb_2023_1.jpg", "c": "contry ABNB in Keesevile, NY | 2023", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/thumbs/10_08_23_WT_1.jpeg", "f": "images/thumbs/10_08_23_WT_1.jpeg", "c": "Mount Washington, NH | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/thumbs/03_07_24_car_cornell_1.JPG", "f": "images/thumbs/03_07_24_car_cornell_1.jpg", "c": "Ithaca, Ny| 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/Me_On_The_Road/port_kent_2023_1.jpg", "f": "images/fulls/Me_On_The_Road/port_kent_2023_1.jpg", "c": "Port Kent, NY | 2023", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/Me_On_The_Road/Vw_NY_Catskill_Camp_2023_1.jpeg", "f": "images/fulls/Me_On_The_Road/Vw_NY_Catskill_Camp_2023_1.jpeg", "c": "Catskill, NY | 2023", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/06_01_24_KTM.JPEG", "f": "images/fulls/car/06_01_24_KTM.JPEG", "c": "A KTM, Beacon NY | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/05_24_24_vw_1.JPEG", "f": "images/fulls/car/05_24_24_vw_1.JPEG", "c": "Weekapaug, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/thumbs/10_22_23_86_1.jpeg", "f": "images/thumbs/10_22_23_86_1.jpeg", "c": "Burlingame, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/thumbs/IMG_9914-min.JPG", "f": "images/thumbs/IMG_9914-min.JPG", "c": "Cleverland, Ohio | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/thumbs/IMG_0390.JPG", "f": "images/thumbs/IMG_0390.JPG", "c": "Westerly, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/10_03_24_vw_2.jpg", "f": "images/fulls/car/10_03_24_vw_2.jpg", "c": "Weekapaug, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/09_05_24_1.jpg", "f": "images/fulls/car/09_05_24_1.jpg", "c": "East Matunuck, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/09_24_24_1.jpg", "f": "images/fulls/car/09_24_24_1.jpg", "c": "Narragansett, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/10_03_24_vw_5.jpg", "f": "images/fulls/car/10_03_24_vw_5.jpg", "c": "Home, Ashaway, RI | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}, {"t": "images/fulls/car/10_06_24_86_1.jpg", "f": "images/fulls/car/10_06_24_86_1.jpg", "c": "Lake George, NY | 2024", "s": "Canon R6 Mark ii + RF24-240mm f/4-6.3 USM"}];
+    const grid = document.getElementById('grid');
+    PHOTOS.forEach((p, idx) => {
+      const a = document.createElement('a');
+      a.href = p.f;
+      a.addEventListener('click', (e) => { e.preventDefault(); openLightbox(idx); });
+      const img = document.createElement('img');
+      img.src = p.t || p.f; img.alt = p.c || 'Photo'; img.loading = 'lazy'; img.decoding = 'async';
+      a.appendChild(img); grid.appendChild(a);
+    });
+
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbCap = document.getElementById('lbCap');
+    let i = 0;
+    function openLightbox(n){ i = n; render(); lb.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeLightbox(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+    function step(d){ i = (i + d + PHOTOS.length) % PHOTOS.length; render(); }
+    function render(){
+      const p = PHOTOS[i];
+      lbImg.src = p.f; lbImg.alt = p.c || '';
+      lbCap.innerHTML = (p.c ? p.c : '') + (p.s ? '<small>' + p.s + '</small>' : '') +
+        '<small>' + (i+1) + ' / ' + PHOTOS.length + '</small>';
+      [1,-1].forEach(d => { const n = new Image(); n.src = PHOTOS[(i+d+PHOTOS.length)%PHOTOS.length].f; });
+    }
+    document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+    document.getElementById('lbNext').addEventListener('click', () => step(1));
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') step(-1);
+      if (e.key === 'ArrowRight') step(1);
+    });
+    let tx = null;
+    lb.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; }, {passive:true});
+    lb.addEventListener('touchend', (e) => { if (tx===null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx)>50) step(dx>0?-1:1); tx=null; }, {passive:true});
+  </script>
 </body>
 </html>

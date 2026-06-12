@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photography — Frank Li</title>
+  <meta name="description" content="The photography portfolio of Runcheng (Frank) Li — portraits, street, eco-portraits, cars, travel, concerts and more. Shot on Canon R6 Mark II across New England and beyond." />
+  <link rel="icon" href="images/favicons/camera.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Design system -->
+  <link rel="stylesheet" href="assets/css/frank-redesign.css" />
+
+  <style>
+    /* ── HERO ─────────────────────────────────────────────── */
+    .ph-hero {
+      padding-top: 9rem;
+      padding-bottom: 1rem;
+    }
+    .ph-hero__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .ph-hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+    .ph-hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      margin-bottom: 1.25rem;
+    }
+    .ph-hero__sub {
+      max-width: 600px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.25rem;
+    }
+    .ph-hero__stats { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .ph-stat__num { font-size: 1.6rem; font-weight: 700; color: var(--text); line-height: 1; }
+    .ph-stat__num span { color: var(--accent); }
+    .ph-stat__label {
+      font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-top: 0.3rem; font-family: var(--font-mono);
+    }
+
+    /* ── GALLERY CARD GRID ────────────────────────────────── */
+    .ph-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      padding: 3.5rem 0 1rem;
+    }
+    .ph-card {
+      display: block;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      transition: border-color var(--transition), transform var(--transition);
+      position: relative;
+    }
+    .ph-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+    .ph-card__media {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--surface-2);
+      position: relative;
+    }
+    .ph-card__media img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.55s ease, opacity 0.45s ease;
+      opacity: 0.9;
+    }
+    .ph-card:hover .ph-card__media img { transform: scale(1.06); opacity: 1; }
+    .ph-card__count {
+      position: absolute; top: 0.85rem; right: 0.85rem;
+      font-family: var(--font-mono); font-size: 0.68rem;
+      color: #fff; background: rgba(7,9,11,0.7);
+      backdrop-filter: blur(6px);
+      padding: 0.25rem 0.65rem; border-radius: 100px;
+      letter-spacing: 0.05em;
+    }
+    .ph-card__body { padding: 1.1rem 1.35rem 1.35rem; }
+    .ph-card__title {
+      font-size: 1.15rem; font-weight: 700; color: var(--text);
+      display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+    .ph-card__arrow { color: var(--text-dim); transition: transform var(--transition), color var(--transition); }
+    .ph-card:hover .ph-card__arrow { color: var(--accent); transform: translate(3px,-3px); }
+    .ph-card__desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+    @media (max-width: 900px) { .ph-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .ph-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="fr-nav" id="navbar">
+    <a href="index.html" class="fr-nav__logo">Frank<span>.</span></a>
+    <ul class="fr-nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="codclimb.html">CodClimb</a></li>
+      <li><a href="adventures.html">Adventures</a></li>
+      <li><a href="photography.html" class="active">Photography</a></li>
+      <li><a href="videography.html">Videography</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="ph-hero container">
+    <div class="ph-hero__eyebrow fade-up">Photography Portfolio</div>
+    <h1 class="fade-up-2">Through the lens.</h1>
+    <p class="ph-hero__sub fade-up-3">
+      Portraits, streets, wildlife, cars, and the road — four years behind the camera,
+      shot mostly on a Canon R6 Mark II across New England and wherever the next trip lands.
+      Pick a series to dive in.
+    </p>
+    <div class="ph-hero__stats fade-up-4">
+      <div><div class="ph-stat__num">10</div><div class="ph-stat__label">Series</div></div>
+      <div><div class="ph-stat__num">300<span>+</span></div><div class="ph-stat__label">Frames</div></div>
+      <div><div class="ph-stat__num">R6<span>II</span></div><div class="ph-stat__label">Main body</div></div>
+    </div>
+  </header>
+
+  <hr class="divider" style="margin-top:2.5rem;" />
+
+  <!-- GALLERY CARDS -->
+  <main class="ph-grid container">
+
+    <a class="ph-card" href="portraitIndividual.html">
+      <div class="ph-card__media">
+        <img src="images/fulls/portrait/04_14_2024_jc_1.JPG" alt="Portraits" loading="lazy" decoding="async" />
+        <span class="ph-card__count">39 photos</span>
+      </div>
+      <div class="ph-card__body">
+        <div class="ph-card__title">Portraits <span class="ph-card__arrow">&#8599;</span></div>
+        <div class="ph-card__desc">Studio and on-location portraits — natural light, real people.</div>
+      </div>
+    </a>
+
+    <a class="ph-card" href="portraitWedding.html">
+      <div class="ph-card__media">
+        <img src="images/thumbs/01_19_24_wed_1.JPG" alt="Couples & Weddings" loading="lazy" decoding="async" />
+        <span class="ph-card__count">23 photos</span>
+      </div>
+      <div class="ph-card__body">
+        <div class="ph-card__title">Couples &amp; Weddings <span class="ph-card__arrow">&#8599;</span></div>
+        <div class="ph-card__desc">The big days and the quiet in-between moments.</div>
+      </div>
+    </a>
+
+    <a class="ph-card" href="streetusa.html">
+      <div class="ph-card__media">
+        <img src="images/fulls/North_Region/Clayton_Pic_1_2024.jpg" alt="Street" loading="lazy" decoding="async" />
+        <span class="ph-card__count">39 photos</span>
+      </div>
+      <div class="ph-card__body">
+        <div class="ph-card__title">Street <span class="ph-card__arrow">&#8599;</span></div>
+        <div class="ph-card__desc">Light and life across American cities and small towns.</div>
+      </div>
+    </a>
+
+    <a class="ph-card" href="ecophotography.html">
+      <div class="ph-card__media">
+        <img src="images/fulls/ecophotography/05_05_24_Block_Island_2.JPEG" alt="Eco-Portraits" loading="lazy" decoding="async" />
+        <span class="ph-card__count">55 photos</span>
+      </div>
+      <div class="ph-card__body">
+        <div class="ph-card__title">Eco-Portraits <span class="ph-card__arrow">&#8599;</span></div>
+        <div class="ph-card__desc">People and creatures in their landscape — the natural world up close.</div>
+      </div>
+    </a>
+
+    <a class="ph-card" href="Animal&Nature.html">
+      <div class="ph-card__media">
+        <img src="images/fulls/ecophotography/June_15_24_Horse_1.JPEG" alt="Animals" loading="lazy" decoding="async" />
+        <span class="ph-card__count">24 photos</span>
+      </div>
+      <div class="ph-card__body">
+        <div class="ph-card__title">Animals <span class="ph-card__arrow">&#8599;</span></div>
+        <div class="ph-card__desc">Wild and domestic — horses, birds, and the family cat.</div>
+      </div>
+    </a>
+
+    <a class="ph-card" href="Human&Nature.html">
+      <div class="ph-card__media">
+        <img src="images/fulls/outdoor/nature/1Y6A5370.jpg" alt="Human & Nature" loading="lazy" decoding="async" />
+        <span class="ph-card__count">18 photos</span>
+      </div>
+      <div class="ph-card__body">
+        <div class="ph-card__title">Human &amp; Nature <span class="ph-card__arrow">&#8599;</span></div>
+        <div class="ph-card__desc">Figures in the landscape — scale, solitude, and place.</div>
+      </div>
+    </a>
+
+    <a class="ph-card" href="CarGallery.html">
+      <div class="ph-card__media">
+        <img src="images/fulls/car/Dec_08_24_Miata_01.JPEG" alt="Cars" loading="lazy" decoding="async" />
+        <span class="ph-card__count">31 photos</span>
+      </div>
+      <div class="ph-card__body">
+        <div class="ph-card__title">Cars <span class="ph-card__arrow">&#8599;</span></div>
+        <div class="ph-card__desc">Miatas, drift builds, and parking-lot finds after dark.</div>
+      </div>
+    </a>
+
+    <a class="ph-card" href="landmarkindex.html">
+      <div class="ph-card__media">
+        <img src="images/fulls/landmark/1Y6A6648.jpg" alt="Travel & Landmarks" loading="lazy" decoding="async" />
+        <span class="ph-card__count">25 photos</span>
+      </div>
+      <div class="ph-card__body">
+        <div class="ph-card__title">Travel &amp; Landmarks <span class="ph-card__arrow">&#8599;</span></div>
+        <div class="ph-card__desc">Monuments and miles — the country from the road.</div>
+      </div>
+    </a>
+
+    <a class="ph-card" href="musicPop.html">
+      <div class="ph-card__media">
+        <img src="images/fulls/pop/07_23_2023_Post_Malone_1.jpeg" alt="Concerts" loading="lazy" decoding="async" />
+        <span class="ph-card__count">Live</span>
+      </div>
+      <div class="ph-card__body">
+        <div class="ph-card__title">Concerts <span class="ph-card__arrow">&#8599;</span></div>
+        <div class="ph-card__desc">Stage lights and live sets — shot from the crowd.</div>
+      </div>
+    </a>
+
+    <a class="ph-card" href="cityNorthRegion.html">
+      <div class="ph-card__media">
+        <img src="images/fulls/outdoor/nature/1Y6A5566.jpg" alt="Cities & Campuses" loading="lazy" decoding="async" />
+        <span class="ph-card__count">35 photos</span>
+      </div>
+      <div class="ph-card__body">
+        <div class="ph-card__title">Cities &amp; Campuses <span class="ph-card__arrow">&#8599;</span></div>
+        <div class="ph-card__desc">Ivy quads and East Coast skylines — much of it from the air.</div>
+      </div>
+    </a>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="fr-footer container" style="margin-top:3.5rem;">
+    <div class="fr-footer__inner">
+      <div>
+        <div style="font-weight:700;font-size:1rem;margin-bottom:0.25rem;">Frank Li</div>
+        <div class="fr-footer__copy">
+          &copy; <script>document.write(new Date().getFullYear())</script> Runcheng (Frank) Li &mdash; Boston, MA
+        </div>
+      </div>
+      <div class="fr-footer__social">
+        <a href="https://www.linkedin.com/in/runcheng-li-1b9748205/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/fr_studio_art/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://space.bilibili.com/398891472" target="_blank" rel="noopener">BiliBili</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>

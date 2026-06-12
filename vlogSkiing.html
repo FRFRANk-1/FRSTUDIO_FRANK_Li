@@ -1,799 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>runchengli.com</title>
-    <link rel="icon" href="images/favicons/camera.png" />
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skiing — Frank Li</title>
+  <meta name="description" content="Skiing — videography by Runcheng (Frank) Li. Powder days from New England to the Wasatch — Sugarloaf, Killington, Salt Lake, and a Miata that drifts to the lift." />
+  <link rel="icon" href="images/favicons/camera.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/frank-redesign.css" />
+  <style>
+    .vd-hero { padding-top: 9rem; padding-bottom: 1rem; }
+    .vd-hero__eyebrow { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .vd-hero__eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); }
+    .vd-hero h1 { font-size: clamp(2.6rem, 6.5vw, 4.8rem); letter-spacing: -0.03em; line-height: 1.03; margin-bottom: 1.1rem; }
+    .vd-hero__sub { max-width: 640px; color: var(--text-muted); font-size: 1.04rem; margin-bottom: 1.75rem; }
+    .vd-back { font-size: 0.85rem; color: var(--text-muted); }
+    .vd-back:hover { color: var(--accent); }
+    .vd-section { padding: 2.5rem 0 1rem; }
+    .vd-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
+    .vd-card { display: flex; flex-direction: column; gap: 0.7rem; }
+    .vd-embed { position: relative; aspect-ratio: 16/9; border-radius: var(--radius-lg); overflow: hidden;
+      background: var(--surface-2); border: 1px solid var(--border); }
+    .vd-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .vd-cap { font-size: 0.92rem; color: var(--text); font-weight: 500; line-height: 1.45; }
+    a.vd-linkcard { transition: transform var(--transition); }
+    a.vd-linkcard:hover { transform: translateY(-3px); }
+    a.vd-linkcard:hover .vd-cap { color: var(--accent); }
+    .vd-embed--link { display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(120% 120% at 70% 20%, rgba(92,225,230,0.16), transparent 55%), linear-gradient(150deg, #10171c 0%, #0a0e11 100%); }
+    .vd-linkplay { width: 56px; height: 56px; border-radius: 50%; border: 1px solid rgba(92,225,230,0.4);
+      background: rgba(92,225,230,0.12); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent); }
+    .vd-linkplat { position: absolute; bottom: 0.85rem; right: 0.95rem; font-family: var(--font-mono);
+      font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+    @media (max-width: 760px) { .vd-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="fr-nav" id="navbar">
+    <a href="index.html" class="fr-nav__logo">Frank<span>.</span></a>
+    <ul class="fr-nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="codclimb.html">CodClimb</a></li>
+      <li><a href="adventures.html">Adventures</a></li>
+      <li><a href="photography.html">Photography</a></li>
+      <li><a href="videography.html" class="active">Videography</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/webfonts/icomoon/style.css" />
+  <header class="vd-hero container">
+    <div class="vd-hero__eyebrow fade-up">Videography · Outdoor</div>
+    <h1 class="fade-up-2">Skiing</h1>
+    <p class="vd-hero__sub fade-up-3">Powder days from New England to the Wasatch — Sugarloaf, Killington, Salt Lake, and a Miata that drifts to the lift.</p>
+    <a class="vd-back fade-up-4" href="videography.html">&#8592; All videography</a>
+  </header>
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
-    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+  <hr class="divider" style="margin-top:2rem;" />
 
-    <link rel="stylesheet" href="assets/css/lightgallery.min.css" />
-
-    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css" />
-
-    <link rel="stylesheet" href="assets/webfonts/flaticon/font/flaticon.css" />
-
-    <link rel="stylesheet" href="assets/css/swiper.css" />
-
-    <link rel="stylesheet" href="assets/css/aos.css" />
-
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body>
-    <div class="site-wrap">
-      <div class="site-mobile-menu">
-        <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
-          </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
+  <section class="vd-section container">
+    <div class="vd-grid">
+      <div class="vd-card">
+        <div class="vd-embed"><iframe src="https://player.bilibili.com/player.html?bvid=BV16jEHzdEfe&page=1&high_quality=1&danmaku=0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen scrolling="no"></iframe></div>
+        <div class="vd-cap">人都来雪场了，Miata 不也得漂漂移？波士顿滑雪 | Sugarloaf, ME</div>
       </div>
-
-      <header class="site-navbar py-3" role="banner">
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <div class="col-6 col-xl-3" data-aos="fade-down">
-              <h1 class="mb-0">
-                <a
-                  href="index.html"
-                  class="text- h2 mb-0"
-                  style="color: rgb(113, 217, 243); font-size: xxx-large"
-                  >Frank Li<br /><br
-                /></a>
-              </h1>
-              <h1 style="color: rgb(255, 255, 255)">
-                Hi, I'm <span style="color: rgb(113, 217, 243)">Frank.</span>
-              </h1>
-
-              <h5 style="color: rgb(241, 241, 241)">
-                Creative Producer Passionte about: <br />
-                <style>
-                  #container {
-                    width: 100%; /* Set the container width to fill the parent */
-                    overflow: hidden;
-                    box-sizing: border-box;
-                    padding: 10px;
-                    white-space: nowrap;
-                    background: #000000; /* Just for better visibility */
-                  }
-
-                  #animatedText {
-                    display: inline-block;
-                    position: relative;
-                    animation: scrollText 10s linear infinite;
-                  }
-
-                  /* Adjust the keyframes to slide only the width of the text */
-                  @keyframes scrollText {
-                    0% {
-                      transform: translateX(100%);
-                    }
-                    100% {
-                      transform: translateX(-100%);
-                    }
-                  }
-                </style>
-                <div id="container">
-                  <div
-                    id="animatedText"
-                    style="color: rgb(255, 255, 255); font-size: large"
-                  >
-                    Video Producing + Editing + Photography + Storytelling
-                  </div>
-                </div>
-              </h5>
-            </div>
-
-            <div class="col-10 col-md-7 d-none d-xl-block" data-aos="fade-down">
-                <nav
-            class="site-navigation position-relative text-right text-lg-center"
-            role="navigation"
-          >
-            <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-              <li class="active">
-                <a href="index.html">Home</a>
-              </li>
-              <li class="has-children">
-                <a href="#">Photography Portfolio</a>
-                <ul class="dropdown">
-                  <li class="has-children">
-                    <a href="#">Portrait</a>
-                    <ul class="dropdown">
-                      <li>
-                        <a href="portraitCouple.html">Couple</a>
-                      </li>
-                      <li><a href="portraitWedding.html">Wedding</a></li>
-                      <li>
-                        <a href="portraitIndividual.html">Individual</a>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li class="has-children">
-                    <a href="#">City</a>
-                    <ul class="dropdown">
-                      <li>
-                        <a href="cityWestRegion.html">West Coast</a>
-                      </li>
-                      <li>
-                        <a href="cityMidWestRegion.html">Midwest Region</a>
-                      </li>
-                      <li>
-                        <a href="cityNorthRegion.html">North Region</a>
-                      </li>
-                      <li>
-                        <a href="citySouthRegion.html">South Region</a>
-                    </ul>
-                  </li>
-                  <li class="has-children">
-                    <a href="#">Travel</a>
-                    <ul class="dropdown">
-                      <li>
-                        <a href="travelBeach.html">Beach</a>
-                      </li>
-                      <li><a href="travelLanscape.html">Landscape</a></li>
-                      <li>
-                        <a href="travelNature.html">Nature</a>
-                      </li>
-                      <li>
-                        <a href="travelMe.html">Me On The Road</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="has-children">
-                    <a href="#">Outdoor</a>
-                    <ul class="dropdown">
-                      <li>
-                        <a href="OutdoorNature.html">Nature View</a>
-                      </li>
-                      <li>
-                        <a href="OutdoorLifestyle.html">Lifestyle Embrace With Nature</a>
-                      </li>
-                      <li>
-                        <a href="OutdoorExtremeActivities.html">Outdoor Activities</a>
-                      </li>
-                      <li>
-                        <a href="OutdoorHiking.html">Hiking</a>
-                      </li>
-                      <li>
-                        <a href="OutdoorMTB.html">Mountain Biking</a>
-                      </li>
-                      <li>
-                        <a href="OutdoorKayaking.html">Kayaking</a>
-                      </li>
-                      <li>
-                        <a href="OutdoorRafting.html">Rafting</a>
-                      </li>
-                      <li>
-                        <a href="OutdoorBloudering.html">Bloudering</a>
-                      </li>
-                      <li>
-                        <a href="OutdoorRockClimbing.html">Rock Climbing</a>
-                      </li>
-                      <li>
-                        <a href="OutdoorSkiing.html">Skiing</a>
-                      </li>
-                      <li>
-                        <a href="OutdoorSnowboarding.html">Snowboarding</a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                  <li class="has-children">
-                    <a href="#">Animals</a>
-                    <ul class="dropdown">
-                      <li>
-                        <a href="AnimalWildLife.html">WildLife</a>  
-                      </li>
-                      <li>
-                        <a href="AnimalCat.html">Cat</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="has-children">
-                    <a href="#">Music & Concerts</a>
-                    <ul class="dropdown">
-                      <li>
-                        <a href="musicRollNRoll.html">Rock & Roll</a>
-                      </li>
-                      <li>
-                        <a href="musicAlterativeIndie.html">Alternative / Indie</a>
-                      </li>
-                      <li>
-                        <a href="musicCountry.html">Country </a>
-                      </li>
-                      <li>
-                        <a href="musicPop.html">Pop</a>
-                      </li>
-                      <li>
-                        <a href="musicRap.html">Rap</a>
-                      </li>
-                    </ul>
-
-                  <li class="has-children">
-                    <a href="CarMeAndVw.html">Car Enthusiat </a>
-                    <ul class="dropdown">
-                      <li>
-                        <a href="CarMeAndVw.html">Me and My Cars</a>
-                      </li>
-                    </ul>
-                </li>
-                  <li class="has-children">
-                    <a href="#">Projects</a>
-                    <ul class="dropdown">
-                      <!-- <li class="has-children">
-                        <a href="#">Photo Projects</a>
-                        <ul class="dropdown">
-                          <li>
-                            <a href="windowsoftheworld.html"
-                              >Windows of the World</a
-                            >
-                          </li>
-                          <li><a href="twowheels.html">Two Wheels</a></li>
-                        </ul>
-                      </li> -->
-                      <li class="has-children">
-                        <a href="#">Photo Projects</a>
-                        <ul class="dropdown">
-                          <li>
-                            <a href="webgiss.html">photographs</a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li class="has-children">
-                <a href="#">Videography Portfolio</a>
-                <ul class="dropdown">
-                  <li class="has-children">
-                    <a href="#">Commerical Event</a>
-                    <ul class="dropdown">
-                      <li>
-                        <a href="commercialWedding.html">Wedding</a>
-                      </li>
-                      <li>
-                        <a href="commercialHarvardIvy_22-23.html">Harvard Ivy League Lunar</a>
-                      </li>
-                      <li>
-                        <a href="commercialBostonFashion.html">Boston Fashion Show</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="has-children">
-                    <a href="DronePostProduction.html">Drone Post Production</a>
-                    <ul class="dropdown">
-                      <li>
-                        <a href="droneLandscape.html">Landscape</a>
-                      </li>
-                      <li>
-                        <a href="droneUniversity.html">University</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="has-children">
-                    <a href="#">Vlog</a>
-                    <ul class="dropdown">
-                      <li class="has-children">
-                        <a
-                          href="vlogChillAndTravel.html"
-                          >Chill & Travel</a
-                        >
-                        <ul class="dropdown">
-                          <li>
-                            <a
-                              href="VlogWestRegion.html"
-                              >US - West Region</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="vlogMidwestRegion.html"
-                              >US - MidWest Regions</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="vlogNorthRegion.html"
-                              >US - North Region</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="vlogSouthRegion.html"
-                              >US - South Region</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a
-                          href="vlogArtInDaily.html"
-                          >Daily Art In Life</a
-                        >
-                      </li>
-                      <li class="has-children">
-                        <a
-                          href="vlogOutdoorExtreme.html"
-                          >Outdoor Extreme Activities</a
-                        >
-                        <ul class="dropdown">
-                          <li>
-                            <a
-                              href="vlogWinterClimb.html"
-                              >Winter Mountain Snow & Ice Climbing</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="vlogSkiing.html"
-                              >Skiing & Snowboarding</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="vlogHiking.html"
-                              >Hiking & Rock Climbing</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="vlogRafting.html"
-                              >Rafting</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="vlogMTB.html"
-                              >Adrenaline Mountain Biking</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="vlogCarDrift.html"
-                              >Car & Simulator Drifting</a
-                            >
-                          </li>
-                        </ul>
-                        <li class="has-children">
-                          <a
-                            href="vlogRockNRoll.html"
-                            >Fascination Of Music</a
-                          >
-                          <ul class="dropdown">
-                            <li>
-                              <a
-                                href="vlogRockNRoll.html"
-                                >The Journey Contentment of Music</a
-                              >
-                            </li>
-                            <!-- <li>
-                              <a
-                                href="vlogArtInDaily.html"
-                                >Art In Daily</a
-                              >
-                            </li> -->
-                          </ul>
-                        </li>
-                      </li>
-                      
-                    </ul>
-                  <li class="has-children">
-                    <a href="#">Production-Videos</a>
-                    <ul class="dropdown">
-                      <li>
-                        <a
-                          href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg"
-                          >Youtube</a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li class="has-children">
-                    <a href="#">Full-Videos-Platform</a>
-                    <ul class="dropdown">
-                      <li>
-                        <a href="https://space.bilibili.com/398891472"
-                          >BiliBili</a
-                        >
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-
-            
-              </li>
-              <li class="has-children">
-                <a href="about.html">About Me</a>
-                <ul class="dropdown">
-                  <li><a href="about.html">Biography</a></li>
-                  <li><a href="contact.html">Contact</a></li>
-              </li>
-            </ul>
-          </nav>
-          </div>
-          <div class="col-6 col-xl-2 text-right" data-aos="fade-down">
-            <div class="d-none d-xl-inline-block">
-              <ul class="site-menu js-clone-nav ml-auto list-unstyled d-flex text-right mb-0" data-class="social">
-                <li>
-                  <a href="https://www.linkedin.com/in/runcheng-li-1b9748205/" class="pl-0 pr-3" target="_blank"><span class="icon-linkedin"></span></a>
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/fr_studio_art/" class="pl-3 pr-3"><span class="icon-instagram" target="_blank"></span></a>
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg" class="pl-3 pr-3" target="_blank"><span class="icon-youtube-play"></span></a>
-                </li>
-              </ul>
-            </div>
-            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-          </div>
-        </div>
+      <div class="vd-card">
+        <div class="vd-embed"><iframe src="https://player.bilibili.com/player.html?bvid=BV1NDonYUELR&page=1&high_quality=1&danmaku=0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen scrolling="no"></iframe></div>
+        <div class="vd-cap">March SLC 滑雪之旅 | 2025</div>
       </div>
-    </header>
-
-      <div class="container-fluid" data-aos="fade" data-aos-delay="500">
-        <style>
-          .down-arrow {
-            text-align: center;
-            font-size: 3rem;
-            color: aqua;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-          }
-
-          .down-arrow:hover {
-            transform: scale(2);
-          }
-        </style>
-        <div class="down-arrow">&#x2193;</div>
-        <div class="row">
-          <style>
-            .space-for-arrow {
-              margin-top: 0%;
-            }
-          </style>
-        </div>
+      <div class="vd-card">
+        <div class="vd-embed"><iframe src="https://player.bilibili.com/player.html?bvid=BV1XP4y1S7yQ&page=1&high_quality=1&danmaku=0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen scrolling="no"></iframe></div>
+        <div class="vd-cap">和朋友们在白茫茫 Vermont 滑雪旅行 | Killington</div>
       </div>
-
-      <div class="container-fluid">
-        <style>
-            @keyframes fadeInOut {
-              0%, 100% { color: #000; opacity: 0; }
-              50% { color: aquamarine; opacity: 1; }
-            }
-        
-            .text-center {
-              animation: fadeInOut 8s ease-in-out infinite;
-            padding: 10%;
-            }
-          </style>
-          <h1 class="text-center">Discover beautiful Moment in Daily Life </h1>
-        </div>
-
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-6" style="padding: 10%; color: rgb(241, 241, 241)">
-            <h2>Boston Early Spring 2024</h2>
-            <p style="font-size: large">
-                Spring breeze start coming in Boston
-            </p>
-            <em
-              >Videography / film shot planning / Editing
-              <br /><br
-            /></em>
-          </div>
-
-          <div class="col-sm-6" style="padding: 2%">
-            <div class="img-fluid">
-              <a href="https://youtu.be/nDWEtj_DCK0">
-                <img
-                  src="images/fulls/Early_Spring_Boston_2024_1.png"
-                  alt="Image"
-                  class="img-fluid rounded"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-6" style="padding: 2%">
-            <div class="img-fluid">
-              <a href="https://www.youtube.com/watch?v=VUqIF3HT9qI">
-                <img
-                  src="images/fulls/UIUC 2022.png"
-                  alt="Image"
-                  class="img-fluid rounded"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="col-sm-6" style="padding: 10%; color: rgb(241, 241, 241)">
-            <h2>The Prairie State - UIUC</h2>
-            <p style="font-size: large">
-              Nestled in Illinois' vast prairies, UIUC is a surprising oasis of
-              academic excellence and natural beauty amidst the stereotypical
-              Midwest cornfields
-            </p>
-            <em>Videography / Editing / Drone Plioting<br /><br /></em>
-          </div>
-        </div>
-      </div>
-
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-6" style="padding: 10%; color: rgb(241, 241, 241)">
-            <h2>The Sunset State - Florida</h2>
-            <p style="font-size: large">
-              Winter warm embrace, golden moment indulge in the soul-soothing
-              wonderland
-            </p>
-            <em>Videography / Editing<br /><br /></em>
-          </div>
-          <div class="col-sm-6" style="padding: 2%">
-            <div class="img-fluid">
-              <a href="https://www.youtube.com/watch?v=j9bD0cGU2AE">
-                <img
-                  src="images/fulls/2023_FL_1.jpg"
-                  alt="Image"
-                  class="img-fluid rounded"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container-fluid" data-aos="fade" data-aos-delay="500">
-        <style>
-          .down-arrow {
-            text-align: center;
-            font-size: 3rem;
-            color: aqua;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            padding: 10%;
-          }
-
-          .down-arrow:hover {
-            transform: scale(2);
-          }
-        </style>
-        <div class="down-arrow">&#x2193;</div>
-        <div class="space-for-arrow"></div>
-        <div class="row">
-          <style>
-            .space-for-arrow {
-              margin-top: 0%;
-            }
-          </style>
-
-<div class="container-fluid">
-    <style>
-        @keyframes fadeInOut {
-          0%, 100% { color: #000; opacity: 0; }
-          50% { color: aquamarine; opacity: 1; }
-        }
-    
-        .text-center {
-          animation: fadeInOut 8s ease-in-out infinite;
-        padding: 10%;
-        }
-      </style>
-      <h1 class="text-center">Photography</h1>
     </div>
+  </section>
 
-          <div class="col-lg-12">
-            <div class="image-wrap-2">
-              <div class="image-info">
-                <h1 style="margin-bottom: 0px; color: white">Portrait</h1> -->
-                <!-- <h5 style="margin-left:-400px; color:white;">International</h5> -->
-                <!-- <a
-                  href="streetinternational.html"
-                  style=""
-                  class="btn btn-outline-white py-2 px-4"
-                  >More Photos</a
-                >
-              </div>
-              <img
-                src="images/fulls/IMG_3446.JPG"
-                alt="Image"
-                class="img-fluid"
-                style="height: 800px"
-              />
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="image-wrap-2">
-              <div class="image-info">
-                <h1 style="margin-bottom: 0px; color: white">Street</h1>
-                <h5 style="color: white">USA</h5>
-                <a href="streetusa.html" class="btn btn-outline-white py-2 px-4"
-                  >More Photos</a
-                >
-              </div>
-              <img
-                src="images/fulls/03_20_24_Street_1.jpg"
-                alt="Image"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="image-wrap-2">
-              <div class="image-info">
-                <h1 style="margin-bottom: 0px; color: white">Animals</h1>
-                <h5 style="color: white">USA</h5>
-                <a href="travelusa.html" class="btn btn-outline-white py-2 px-4"
-                  >More Photos</a
-                >
-              </div>
-              <img
-                src="images/thumbs/03_21_24_Ben_1.jpg"
-                alt="Image"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="image-wrap-2">
-              <div class="image-info">
-                <h1 style="margin-bottom: 0px; color: white">Travel</h1>
-                <h5 style="color: white">International</h5>
-                <a
-                  href="travelinternational.html"
-                  class="btn btn-outline-white py-2 px-4"
-                  >More Photos</a
-                >
-              </div>
-              <img
-                src="images/fulls/03_08_24_mirror_1.jpg"
-                alt="Image"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-
-          <div class="col-lg-6" style="margin: auto">
-            <div class="image-wrap-2">
-              <div class="image-info">
-                <h1 style="color: white">Car</h1>
-                <a
-                  href="CarMeAndVw.html"
-                  class="btn btn-outline-white py-2 px-4"
-                  >More Photos</a
-                >
-              </div>
-              <img
-                src="images/thumbs/10_08_23_WT_2.jpg"
-                alt="Image"
-                class="img-fluid"
-              />
-            </div>
-          </div> -->
-          <!-- <div class="col-lg-6">
-            <div class="image-wrap-2">
-              <div class="image-info">
-                <h1 style="color:white;">Windows of the World</h1>
-                <a href="windowsoftheworld.html" class="btn btn-outline-white py-2 px-4">More Photos</a>
-              </div>
-              <img src="images/fulls/windowsoftheworldsquare.jpg" alt="Image" class="img-fluid">
-            </div>
-          </div>
-        </div>
+  <footer class="fr-footer container" style="margin-top:3rem;">
+    <div class="fr-footer__inner">
+      <div>
+        <div style="font-weight:700;font-size:1rem;margin-bottom:0.25rem;">Frank Li</div>
+        <div class="fr-footer__copy">&copy; <script>document.write(new Date().getFullYear())</script> Runcheng (Frank) Li &mdash; Boston, MA</div>
       </div>
-
-      <div class="footer py-4">
-        <div class="container-fluid text-center">
-          <!-- <div class="video">
-            <iframe
-              style="
-                width: 100%;
-                height: 60%;
-                position: absolute;
-                text-align: center;
-                left: 0px;
-                top: 0%;
-                overflow: hidden;
-              "
-              frameborder="0"
-              type="text/html"
-              src="https://www.dailymotion.com/embed/video/k2HbPjxQfLVSrNA2O12"
-              width="100%"
-              height="100%"
-              allowfullscreen
-              allow="autoplay; web-share"
-            >
-            </iframe>
-          </div> -->
-
-          <!-- <div class="container-fluid text-center">
-            <div class="video">
-              <iframe
-                style="
-                  width: 100%;
-                  height: 100%;
-                  position: absolute;
-                  text-align: center;
-                  left: 0px;
-                  top: 480%;
-                  overflow: hidden;
-                "
-                src="//player.bilibili.com/player.html?aid=1100791250&bvid=BV1GA4m137qu&cid=1444839312&p=1"
-                scrolling="yes"
-                frameborder="no"
-                framespacing="0"
-                allowfullscreen="yes"
-              >
-              </iframe>
-            </div>
-          </div> -->
-          <!-- <p> -->
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            <!-- Copyright &copy; -->
-            <!-- <script
-              data-cfasync="false"
-              src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
-            ></script>
-            <script> -->
-              <!-- document.write(new Date().getFullYear());
-            </script>
-            All rights reserved | Template by -->
-            <!-- <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          <!-- </p>
-        </div>
+      <div class="fr-footer__social">
+        <a href="https://www.linkedin.com/in/runcheng-li-1b9748205/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/fr_studio_art/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://space.bilibili.com/398891472" target="_blank" rel="noopener">BiliBili</a>
       </div>
-    </div> --> -->
+    </div>
+  </footer>
 
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="assets/js/jquery-ui.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/jquery.stellar.min.js"></script>
-    <script src="assets/js/jquery.countdown.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/bootstrap-datepicker.min.js"></script>
-    <script src="assets/js/swiper.min.js"></script>
-    <script src="assets/js/aos.js"></script>
-
-    <script src="assets/js/picturefill.min.js"></script>
-    <script src="assets/js/lightgallery-all.min.js"></script>
-    <script src="assets/js/jquery.mousewheel.min.js"></script>
-
-    <script src="assets/js/main.js"></script>
-
-    <script>
-      $(document).ready(function () {
-        $("#lightgallery").lightGallery({
-          download: false,
-          share: false,
-        });
-      });
-    </script>
-  </body>
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  </script>
+</body>
 </html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Videography — Frank Li</title>
+  <meta name="description" content="The videography portfolio of Runcheng (Frank) Li — travel vlogs, outdoor films, commercial and event work, drone, and live music. Across YouTube and BiliBili." />
+  <link rel="icon" href="images/favicons/camera.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Design system -->
+  <link rel="stylesheet" href="assets/css/frank-redesign.css" />
+
+  <style>
+    .vg-hero { padding-top: 9rem; padding-bottom: 1rem; }
+    .vg-hero__eyebrow {
+      font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .vg-hero__eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); }
+    .vg-hero h1 { font-size: clamp(2.8rem, 7vw, 5.2rem); letter-spacing: -0.03em; line-height: 1.02; margin-bottom: 1.25rem; }
+    .vg-hero__sub { max-width: 600px; color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2rem; }
+    .vg-platforms { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .vg-platform {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1.1rem; border: 1px solid var(--border); border-radius: 100px;
+      font-size: 0.85rem; font-weight: 600; color: var(--text-muted);
+      background: var(--surface); transition: all var(--transition);
+    }
+    .vg-platform:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .vg-section { padding: 3rem 0 0.5rem; }
+    .vg-section__head { margin-bottom: 1.5rem; }
+    .vg-section__head .label { margin-bottom: 0.6rem; }
+    .vg-section__head p { font-size: 0.9rem; max-width: 620px; }
+
+    .vg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+
+    .vg-card {
+      display: block; border-radius: var(--radius-lg); overflow: hidden;
+      background: var(--surface); border: 1px solid var(--border);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .vg-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+    .vg-card__art {
+      aspect-ratio: 16/9; position: relative; overflow: hidden;
+      background: linear-gradient(150deg, #10171c 0%, #0a0e11 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .vg-card__art img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.5; z-index: 0; transition: transform 0.55s ease, opacity var(--transition);
+    }
+    .vg-card:hover .vg-card__art img { opacity: 0.72; transform: scale(1.06); }
+    .vg-card__art::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top, rgba(7,9,11,0.8) 0%, rgba(7,9,11,0.15) 55%, rgba(7,9,11,0.35) 100%);
+    }
+    .vg-card__play {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 1px solid rgba(92,225,230,0.5);
+      background: rgba(8,12,14,0.45); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: var(--accent); position: relative; z-index: 2;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .vg-card:hover .vg-card__play { transform: scale(1.08); background: rgba(92,225,230,0.22); }
+    .vg-card__tag {
+      position: absolute; top: 0.85rem; left: 0.85rem; z-index: 2;
+      font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--text); border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 100px; padding: 0.2rem 0.6rem; background: rgba(7,9,11,0.55); backdrop-filter: blur(4px);
+    }
+    .vg-card__count {
+      position: absolute; bottom: 0.85rem; right: 0.85rem; z-index: 2;
+      font-family: var(--font-mono); font-size: 0.66rem; color: rgba(255,255,255,0.8);
+    }
+    .vg-card__body { padding: 1rem 1.3rem 1.25rem; }
+    .vg-card__title {
+      font-size: 1.08rem; font-weight: 700; color: var(--text);
+      display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+    .vg-card__arrow { color: var(--text-dim); transition: transform var(--transition), color var(--transition); }
+    .vg-card:hover .vg-card__arrow { color: var(--accent); transform: translate(3px,-3px); }
+    .vg-card__desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+
+    @media (max-width: 900px) { .vg-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .vg-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="fr-nav" id="navbar">
+    <a href="index.html" class="fr-nav__logo">Frank<span>.</span></a>
+    <ul class="fr-nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="codclimb.html">CodClimb</a></li>
+      <li><a href="adventures.html">Adventures</a></li>
+      <li><a href="photography.html">Photography</a></li>
+      <li><a href="videography.html" class="active">Videography</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="vg-hero container">
+    <div class="vg-hero__eyebrow fade-up">Videography Portfolio</div>
+    <h1 class="fade-up-2">Stories in motion.</h1>
+    <p class="vg-hero__sub fade-up-3">
+      Travel vlogs across the country, outdoor films, commercial and event work, and drone —
+      cut on the road and posted to YouTube and BiliBili. Pick a series, or watch the full reels.
+    </p>
+    <div class="vg-platforms fade-up-4">
+      <a class="vg-platform" href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg" target="_blank" rel="noopener">YouTube &#8599;</a>
+      <a class="vg-platform" href="https://space.bilibili.com/398891472" target="_blank" rel="noopener">BiliBili &#8599;</a>
+      <a class="vg-platform" href="https://www.instagram.com/fr_studio_art/" target="_blank" rel="noopener">Instagram &#8599;</a>
+    </div>
+  </header>
+
+  <hr class="divider" style="margin-top:2.5rem;" />
+
+  <main class="container">
+
+    <!-- VLOGS -->
+    <section class="vg-section">
+      <div class="vg-section__head">
+        <span class="label">01 · Vlogs</span>
+        <h2>On the Road</h2>
+        <p>Region by region and trip by trip — the country at windshield height.</p>
+      </div>
+      <div class="vg-grid">
+        <a class="vg-card" href="VlogWestRegion.html">
+          <div class="vg-card__art"><img src="images/West_Coast/Jun_2022_Sedona_12.jpeg" alt="" loading="lazy" /><span class="vg-card__tag">Region</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">6 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">West Coast <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Pacific Coast Highway, the desert parks, and Seattle.</div></div>
+        </a>
+        <a class="vg-card" href="vlogMidwestRegion.html">
+          <div class="vg-card__art"><img src="images/fulls/landscape/08_26_22_Horse_cave_1.JPEG" alt="" loading="lazy" /><span class="vg-card__tag">Region</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">2 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Midwest <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Mammoth Cave, Big Ten campuses, and long highways.</div></div>
+        </a>
+        <a class="vg-card" href="vlogNorthRegion.html">
+          <div class="vg-card__art"><img src="images/fulls/landmark/1Y6A6648.jpg" alt="" loading="lazy" /><span class="vg-card__tag">Region</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">6 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">East Coast <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">New England, the Adirondacks, the Catskills, and NYC.</div></div>
+        </a>
+        <a class="vg-card" href="vlogSouthRegion.html">
+          <div class="vg-card__art"><img src="images/fulls/South-Region/1Y6A1339.jpg" alt="" loading="lazy" /><span class="vg-card__tag">Region</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">7 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">South <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Florida and the Smokies — Key West, Tampa, Miami.</div></div>
+        </a>
+        <a class="vg-card" href="vlogArtInDaily.html">
+          <div class="vg-card__art"><img src="images/fulls/North_Region/Clayton_Pic_1_2024.jpg" alt="" loading="lazy" /><span class="vg-card__tag">Series</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">1 video</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Daily Art in Life <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Small everyday moments, made cinematic.</div></div>
+        </a>
+        <a class="vg-card" href="vlogChillAndTravel.html">
+          <div class="vg-card__art"><img src="images/fulls/ecophotography/07_04_24_Thousand_Island_Bridge_1.JPEG" alt="" loading="lazy" /><span class="vg-card__tag">Series</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">1 video</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Chill &amp; Travel <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Slow travel and easy edits — lakes, fireworks, the road.</div></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- OUTDOOR -->
+    <section class="vg-section">
+      <div class="vg-section__head">
+        <span class="label">02 · Outdoor</span>
+        <h2>Into the Wild</h2>
+        <p>Ski, surf, climb, hike — the adventure edits, shot on the road and the rock.</p>
+      </div>
+      <div class="vg-grid">
+        <a class="vg-card" href="vlogSkiing.html">
+          <div class="vg-card__art"><img src="images/adventures-web/ski/thumbs/ski-10.jpg" alt="" loading="lazy" /><span class="vg-card__tag">Snow</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">3 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Skiing <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Sugarloaf to Salt Lake — and a Miata that drifts to the lift.</div></div>
+        </a>
+        <a class="vg-card" href="vlogHiking.html">
+          <div class="vg-card__art"><img src="images/adventures-web/hiking/thumbs/hiking-01.jpg" alt="" loading="lazy" /><span class="vg-card__tag">Trail</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">2 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Hiking <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">New Hampshire ridgelines and camping nights.</div></div>
+        </a>
+        <a class="vg-card" href="vlogSurfing.html">
+          <div class="vg-card__art"><img src="images/adventures-web/surf/thumbs/surf-01.jpg" alt="" loading="lazy" /><span class="vg-card__tag">Swell</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">3 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Surfing <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Cold-water sessions at Nahant.</div></div>
+        </a>
+        <a class="vg-card" href="vlogClimbing.html">
+          <div class="vg-card__art"><img src="images/adventures-web/climb/thumbs/climb-25.jpg" alt="" loading="lazy" /><span class="vg-card__tag">Rock</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">3 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Climbing <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Sea-cliff granite at Acadia and Mt. Washington.</div></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- COMMERCIAL -->
+    <section class="vg-section">
+      <div class="vg-section__head">
+        <span class="label">03 · Commercial &amp; Events</span>
+        <h2>Commissioned Work</h2>
+        <p>Weddings, cultural events, and brand work — shot and cut to a brief.</p>
+      </div>
+      <div class="vg-grid">
+        <a class="vg-card" href="commercialWedding.html">
+          <div class="vg-card__art"><img src="images/thumbs/01_19_24_wed_1.JPG" alt="" loading="lazy" /><span class="vg-card__tag">Event</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">2 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Wedding Films <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">The whole day, told in a few minutes.</div></div>
+        </a>
+        <a class="vg-card" href="commercialHarvardIvy_22-23.html">
+          <div class="vg-card__art"><img src="images/fulls/pop/03_14_2024_West_Life_1.jpeg" alt="" loading="lazy" /><span class="vg-card__tag">Event</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">1 video</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Harvard Ivy Lunar Gala <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Lunar New Year gala, 2022–23.</div></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- DRONE -->
+    <section class="vg-section">
+      <div class="vg-section__head">
+        <span class="label">04 · Drone Post-Production</span>
+        <h2>From Above</h2>
+        <p>Aerial cinematography and graded edits — coastlines and campuses from the air.</p>
+      </div>
+      <div class="vg-grid">
+        <a class="vg-card" href="droneLandscape.html">
+          <div class="vg-card__art"><img src="images/fulls/landmark/05_05_24_Narragansett_1.JPEG" alt="" loading="lazy" /><span class="vg-card__tag">Aerial</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">3 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Landscape <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Coastlines, sunset towns, and golden hour.</div></div>
+        </a>
+        <a class="vg-card" href="droneUniversity.html">
+          <div class="vg-card__art"><img src="images/fulls/outdoor/nature/1Y6A5566.jpg" alt="" loading="lazy" /><span class="vg-card__tag">Aerial</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">2 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Campus <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Cornell and Ithaca from the air.</div></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- LIVE MUSIC -->
+    <section class="vg-section">
+      <div class="vg-section__head">
+        <span class="label">05 · Live Music</span>
+        <h2>Front Row</h2>
+        <p>4K concert films from the crowd — full sets live on BiliBili.</p>
+      </div>
+      <div class="vg-grid">
+        <a class="vg-card" href="vlogConcerts.html">
+          <div class="vg-card__art"><img src="images/fulls/pop/07_23_2023_Post_Malone_1.jpeg" alt="" loading="lazy" /><span class="vg-card__tag">Live</span><div class="vg-card__play">&#9654;</div><span class="vg-card__count">6 videos</span></div>
+          <div class="vg-card__body"><div class="vg-card__title">Concerts <span class="vg-card__arrow">&#8599;</span></div><div class="vg-card__desc">Queen, the Eagles, Post Malone, Cigarettes After Sex &amp; more.</div></div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="fr-footer container" style="margin-top:3.5rem;">
+    <div class="fr-footer__inner">
+      <div>
+        <div style="font-weight:700;font-size:1rem;margin-bottom:0.25rem;">Frank Li</div>
+        <div class="fr-footer__copy">
+          &copy; <script>document.write(new Date().getFullYear())</script> Runcheng (Frank) Li &mdash; Boston, MA
+        </div>
+      </div>
+      <div class="fr-footer__social">
+        <a href="https://www.linkedin.com/in/runcheng-li-1b9748205/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/fr_studio_art/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/channel/UCC_5cwOxCAa6hTn51Bj8JXg" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://space.bilibili.com/398891472" target="_blank" rel="noopener">BiliBili</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
